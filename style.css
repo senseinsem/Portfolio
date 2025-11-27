@@ -1,0 +1,685 @@
+/* Reset & Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    background-color: #DCEcff; /* Light sky blue */
+    color: #333;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+
+/* Hero Header */
+#hero-header {
+    height: 100vh;
+    background: url('mc.png') center center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+/* Dark overlay */
+#hero-header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.45);
+    z-index: 1;
+}
+
+
+.hero-content {
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content .profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    object-fit: cover;
+    margin: 0 auto 20px;
+}
+
+.hero-content h1 {
+    font-family: 'Crowk', sans-serif;
+    color: #ffffff;
+    font-size: 3.5rem;
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    opacity: 0.9;
+}
+
+/* Navbar */
+.hero-content nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 25px;
+    list-style: none;
+}
+
+.hero-content nav ul li a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.hero-content nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #9fa63e; /* green accent */
+}
+
+/* Sections */
+section {
+    padding: 10px 20px;
+    max-width: 950px;
+    margin: auto;
+}
+
+article {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(74, 110, 153, 0.15);
+    margin-bottom: 10px;
+    transition: 0.3s ease;
+}
+
+article:hover {
+    transform: translateY(-5px);
+}
+
+/* Schools Section */
+.schools-section {
+    position: relative;
+    background: url('education/ubuilding.png') center/cover no-repeat;
+    padding: 80px 20px;
+    color: #fff;
+}
+
+.schools-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5); /* dark overlay */
+    z-index: 1;
+}
+
+.schools-section article {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+/* School Cards */
+.schools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.school-card {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    background: #000; /* fallback */
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.school-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+/* Card content */
+.school-card img,
+.school-card h3,
+.school-card p {
+    position: relative;
+    z-index: 2;
+    margin: 3px 0;
+}
+
+.school-card img.school-logo {
+    width: 80px;
+    border-radius: 10px;
+    margin: 0 auto 10px;
+}
+
+.school-card h3 {
+    font-size: 1.2em;
+}
+
+.school-card p {
+    font-size: 0.95em;
+}
+
+/* Hover effect */
+.school-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+
+.school-logo {
+    width: 80px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+    border-radius: 10px;
+}
+
+.school-card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+}
+
+.school-card p {
+    margin: 3px 0;
+    font-size: 0.95em;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #4A6E99;
+    color: #fff;
+}
+
+/* Form */
+form input, form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #94B6D8;
+}
+
+form input[type="submit"] {
+    background-color: #4A6E99;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #2F455A;
+}
+
+/* FAQ */
+.faq-item {
+    margin-bottom: 15px;
+}
+
+.faq-question {
+    width: 100%;
+    background-color: #4A6E99;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.faq-question:hover {
+    background-color: #2F455A;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    border-radius: 6px;
+    padding: 0 20px;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.faq-answer.open {
+    padding: 12px 20px;
+}
+
+/* Skills & Hobbies Grid */
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.skill-card {
+    display: block;
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(74, 110, 153, 0.15);
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.skill-card:hover {
+    transform: scale(1.25);
+    box-shadow: 0 10px 30px rgba(74, 110, 153, 0.30);
+}
+
+.skill-card img {
+    width: 160px;
+    height: 100px;
+    margin-bottom: 12px;
+}
+
+/* Popup */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.popup-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.close {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.popup-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.popup-card {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 120px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.popup-card:hover {
+    transform: scale(1.2);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.popup-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#bigImagePopup {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    transition: opacity 0.3s ease;
+}
+
+/* Date Button */
+.date-section button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    background-color: #4A6E99;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.date-section button:hover {
+    background-color: #2F455A;
+}
+
+.date-display {
+    max-height: 0;          /* hidden initially */
+    opacity: 0;             /* fully transparent */
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.date-display.show {
+    max-height: 100px;      /* enough height to show text */
+    opacity: 1;             /* visible */
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px 20px;
+    background-color: #BCDAF4;
+    border-top: 1px solid #94B6D8;
+    color: #2F455A;
+}
+
+footer a {
+    color: #2F455A;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #3EA64B;
+}
+
+/* Experience Section */
+#experience {
+    padding: 10px 20px;
+    max-width: 950px;
+    margin: auto;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.experience-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(74, 110, 153, 0.15);
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+.experience-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(74, 110, 153, 0.25);
+}
+
+.experience-card img {
+    width: 300px;
+    height: 120px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.experience-flex button,
+.experience-card button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    background-color: #4A6E99;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.experience-flex button:hover,
+.experience-card button:hover {
+    background-color: #2F455A;
+}
+
+/* Theme switch button */
+#theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #DCEcff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+    z-index: 1000; /* ensures it’s always on top */
+    background-color: rgba(63, 63, 63, 0.9); /* slightly transparent for contrast */
+    backdrop-filter: blur(6px); /* optional: subtle blur of background behind */
+}
+
+#theme-switch img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Buttons on page */
+button {
+    background-color: #4A6E99;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #2F455A;
+}
+body.lightmode {
+    background-color: #DCEcff;
+    color: #333;
+}
+
+/* Dark mode */
+body.darkmode {
+    background-color: #1E1E2F; /* dark background */
+    color: #EEE; /* default text color */
+    transition: all 0.3s ease;
+}
+
+/* Articles/cards in dark mode */
+body.darkmode article,
+body.darkmode .experience-card,
+body.darkmode .skill-card,
+body.darkmode .school-card {
+    background-color: #2A2A3C; /* darker card background */
+    color: #EEE; /* light text */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+body.lightmode button {
+    background-color: #4A6E99; /* your preferred light mode color */
+    color: white;
+}
+
+body.lightmode button:hover {
+    background-color: #2F455A;
+}
+
+/* Table in dark mode */
+body.darkmode table {
+    border-color: #555;
+}
+
+body.darkmode th {
+    background-color: #3A3A5A;
+    color: #EEE;
+}
+
+body.darkmode td {
+    border-bottom: 1px solid #555;
+    color: #EEE;
+}
+
+/* Buttons in dark mode */
+body.darkmode button {
+    background-color: #3A3A5A;
+    color: #EEE;
+}
+
+body.darkmode button:hover {
+    background-color: #555;
+}
+
+/* Popups in dark mode */
+body.darkmode .popup-content {
+    background-color: #2A2A3C;
+    color: #EEE;
+}
+
+/* FAQ in dark mode */
+body.darkmode .faq-question {
+    background-color: #3A3A5A;
+    color: #EEE;
+}
+
+body.darkmode .faq-answer {
+    background-color: #2A2A3C;
+    color: #EEE;
+}
+/* --- Dark Mode for Popup Cards --- */
+body.darkmode .popup-card {
+    background-color: #3A3A5A; /* dark background for individual cards */
+    color: #EEE; /* make text readable */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+body.darkmode .popup-card p {
+    color: #EEE; /* ensures any text inside is readable */
+}
+
+body.darkmode .popup-card img {
+    border: 1px solid #555; /* optional for better contrast */
+}
+
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #DCEcff; /* Light mode background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+/* Loading Text */
+#loading-screen .loading-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #3A3A5A;
+    font-family: 'Crowk', sans-serif;
+}
+
+/* Bouncing Balls Container */
+.bouncing-balls {
+    display: flex;
+    gap: 12px;
+}
+
+/* Each Ball */
+.bouncing-balls .ball {
+    width: 20px;
+    height: 20px;
+    background-color: #4A6E99; /* your button color */
+    border-radius: 50%;
+    animation: bounce 1s infinite;
+}
+
+/* Stagger the animation for each ball */
+.bouncing-balls .ball:nth-child(1) { animation-delay: 0s; }
+.bouncing-balls .ball:nth-child(2) { animation-delay: 0.1s; }
+.bouncing-balls .ball:nth-child(3) { animation-delay: 0.2s; }
+.bouncing-balls .ball:nth-child(4) { animation-delay: 0.3s; }
+.bouncing-balls .ball:nth-child(5) { animation-delay: 0.4s; }
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); } /* bounce height */
+}
+
+/* Fade Out Loader */
+#loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}

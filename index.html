@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Alvian - Personal Webpage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crowk&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="lightmode">
+
+        <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-text">better with darkmode</div>
+        <div class="bouncing-balls">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+        </div>
+    </div>
+    
+    <button id="theme-switch">
+        <img id="theme-icon" src="mode/dark.png" alt="Toggle Theme">
+    </button>
+
+    <!-- Header -->
+    <header id="hero-header">
+        <div class="hero-content">
+            <img src="alex.png" alt="My Photo" class="profile-img">
+            <h1>Alex Alvian</h1>
+            <p>Watch and Learning</p>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Me -->
+    <section id="about">
+        <article>
+            <h2>About Me</h2>
+            <p>Hello! I enjoy coding and am constantly learning to improve my skills. 
+            I love creating animations and editing videos, and I sometimes play games and 
+            stream on social media. My ultimate goal is to keep pushing myself and reach 
+            milestones I have yet to achieve.</p>
+        </article>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <article>
+            <h2>Education</h2>
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Institution</th>
+                    <th>Degree</th>
+                </tr>
+                <tr>
+                    <td>2021-2023</td>
+                    <td>SMK Bukit Garam, Sabah</td>
+                    <td>Diploma in Business Studies</td>
+                </tr>
+                <tr>
+                    <td>2023-2027</td>
+                    <td>Technical University of Malaysia, Melaka</td>
+                    <td>Bachelor of Computer Science</td>
+                </tr>
+            </table>
+        </article>
+    </section>
+
+<!-- Schools / University Section -->
+<section id="schools">
+    <article>
+        <h2>Schools & University</h2>
+        <div class="schools-grid">
+            <!-- SMK Card -->
+            <div class="school-card" data-bg="education/smkbuilding.png" onclick="openPopup('smkPopup')">
+                <img src="education/smkbg.png" alt="SMK Bukit Garam Logo" class="school-logo">
+                <h3>SMK Bukit Garam, Sabah</h3>
+            </div>
+
+            <!-- UTeM Card -->
+            <div class="school-card" data-bg="education/ubuilding.png" onclick="openPopup('utemPopup')">
+                <img src="education/utem.png" alt="UTeM Logo" class="school-logo">
+                <h3>Technical University of Malaysia, Melaka</h3>
+            </div>
+        </div>
+    </article>
+</section>
+
+<!-- SMK Popup -->
+<div id="smkPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('smkPopup')">&times;</span>
+        <h2>Capture Moments</h2>
+        <div class="popup-grid">
+            <div class="popup-card"><img src="education/smk/alex.png" alt="SMK Photo 1"><p>Photo 1</p></div>
+            <div class="popup-card"><img src="education/smk/1.png" alt="SMK Photo 2"><p>Photo 2</p></div>
+            <div class="popup-card"><img src="education/smk/2.png" alt="SMK Photo 3"><p>Photo 3</p></div>
+            <div class="popup-card"><img src="education/smk/3.png" alt="SMK Photo 3"><p>Photo 4</p></div>
+            <div class="popup-card"><img src="education/smk/4.png" alt="SMK Photo 3"><p>Photo 5</p></div>
+            <div class="popup-card"><img src="education/smk/5.png" alt="SMK Photo 3"><p>Photo 6</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- UTeM Popup -->
+<div id="utemPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('utemPopup')">&times;</span>
+        <h2>Capture Moments</h2>
+        <div class="popup-grid">
+            <div class="popup-card"><img src="education/utem/1.png" alt="UTeM Photo 1"><p>Photo 1</p></div>
+            <div class="popup-card"><img src="education/utem/2.png" alt="UTeM Photo 2"><p>Photo 2</p></div>
+            <div class="popup-card"><img src="education/utem/3.png" alt="UTeM Photo 3"><p>Photo 3</p></div>
+            <div class="popup-card"><img src="education/utem/4.png" alt="UTeM Photo 3"><p>Photo 4</p></div>
+            <div class="popup-card"><img src="education/utem/5.png" alt="UTeM Photo 3"><p>Photo 5</p></div>
+            <div class="popup-card"><img src="education/utem/6.png" alt="UTeM Photo 3"><p>Photo 6</p></div>
+            <div class="popup-card"><img src="education/utem/7.png" alt="UTeM Photo 3"><p>Photo 7</p></div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Skills & Hobbies with Popups -->
+    <section id="skills">
+        <article>
+            <h2>Skills & Hobbies</h2>
+            <div class="skill-grid">
+                <div class="skill-card" onclick="openPopup('htmlPopup')">
+                    <img src="coding.png" alt="Coding">
+                    <p>Coding</p>
+                </div>
+                <div class="skill-card" onclick="openPopup('designPopup')">
+                    <img src="gdesign.png" alt="Graphic Design">
+                    <p>Graphic Design</p>
+                </div>
+                <div class="skill-card" onclick="openPopup('gamingPopup')">
+                    <img src="pgame.png" alt="Gaming">
+                    <p>Playing Game</p>
+                </div>
+                <div class="skill-card" onclick="openPopup('streamPopup')">
+                    <img src="streaming.png" alt="Streaming">
+                    <p>Streaming</p>
+                </div>
+                <div class="skill-card" onclick="openPopup('animationPopup')">
+                    <img src="animator.png" alt="Animation">
+                    <p>Animation</p>
+                </div>
+                <div class="skill-card" onclick="openPopup('animePopup')">
+                    <img src="anime.png" alt="Anime">
+                    <p>Anime</p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <article>
+            <h2>Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card" onclick="openPopup('mcServerPopup')">
+                    <img src="server.png" alt="Minecraft Server">
+                    <h3>Minecraft Server Management</h3>
+                    <p>Managed a community Minecraft server, handling plugins, events, and player moderation. Ensured server stability, configured plugins, and organized engaging activities for players.</p>
+                    <button onclick="openPopup('mcServerPopup')">See</button>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Popups -->
+
+    <!-- Coding Popup with Safe Clock -->
+    <div id="htmlPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('htmlPopup')">&times;</span>
+            <h2>Coding Skills</h2>
+            <div class="popup-grid">
+                <div class="popup-card"><img src="programming/html.png" alt="HTML"><p>HTML</p></div>
+                <div class="popup-card"><img src="programming/css.png" alt="CSS"><p>CSS</p></div>
+                <div class="popup-card"><img src="programming/js.png" alt="JavaScript"><p>JavaScript</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Graphic Design Popup -->
+    <div id="designPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('designPopup')">&times;</span>
+            <h2>Graphic Design</h2>
+            <div class="popup-grid">
+                <div class="popup-card"><img src="graphicdesign/chracter.png" alt="Photoshop"><p>Photoshop</p></div>
+                <div class="popup-card"><img src="graphicdesign/esport.png" alt="Illustrator"><p>Illustrator</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gaming Popup -->
+    <div id="gamingPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('gamingPopup')">&times;</span>
+            <h2>Playing Games</h2>
+            <div class="popup-grid">
+                <div class="popup-card"><img src="game/minecraft.png" alt="Minecraft"><p>Minecraft</p></div>
+                <div class="popup-card"><img src="game/battlefield.png" alt="Battlefield"><p>Battlefield</p></div>
+                <div class="popup-card"><img src="game/mlegend.png" alt="Mobile Legends"><p>Mobile Legends</p></div>
+                <div class="popup-card"><img src="game/bs.png" alt="Blood Strike"><p>Blood Strike</p></div>
+                <div class="popup-card"><img src="game/cod.png" alt="Call Of Duty"><p>Call Of Duty</p></div>
+                <div class="popup-card"><img src="game/pubg.png" alt="PUBG"><p>PUBG</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Streaming Popup -->
+    <div id="streamPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('streamPopup')">&times;</span>
+            <h2>Streaming</h2>
+            <div class="popup-grid">
+                <div class="popup-card"><img src="stream/yt.png" alt="YouTube"><p>YouTube</p></div>
+                <div class="popup-card"><img src="stream/fb.png" alt="Twitch"><p>Facebook</p></div>
+                <div class="popup-card"><img src="stream/tt.png" alt="OBS"><p>TikTok</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation Popup -->
+    <div id="animationPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('animationPopup')">&times;</span>
+            <h2>Animation</h2>
+            <div class="popup-grid">
+                <div class="popup-card"><img src="animation/hp.png" alt="Blender"><p>Blender</p></div>
+                <a href="https://youtu.be/5El2oPyLueI?si=GJ-XKhFjiFMWvHN2" target="_blank" class="popup-card">
+                    <img src="animation/aif.png" alt="iBisPaint">
+                    <p>iBisPaint</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Anime Popup -->
+    <div id="animePopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('animePopup')">&times;</span>
+            <h2>Anime</h2>
+            <div class="popup-grid">
+                <div class="popup-card"><img src="anime/op.png" alt="One Piece"><p>One Piece</p></div>
+                <div class="popup-card"><img src="anime/aot.png" alt="Attack On Titan"><p>Attack On Titan</p></div>
+                <div class="popup-card"><img src="anime/kny.png" alt="Kimetsu No Yaiba"><p>Kimetsu No Yaiba</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minecraft Server Popup -->
+    <div id="mcServerPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('mcServerPopup')">&times;</span>
+            <h2>Minecraft Server Management</h2>
+            <div class="popup-grid">
+                <div class="popup-card">
+                    <img src="server/plugins.png" alt="Plugins">
+                    <p>Installed & Configured Plugins</p>
+                </div>
+                <div class="popup-card">
+                    <img src="server/player.png" alt="Moderation">
+                    <p>Player Moderation</p>
+                </div>
+                <div class="popup-card">
+                    <img src="server/event.png" alt="Events">
+                    <p>Organized Community Events</p>
+                </div>
+                <div class="popup-card">
+                    <img src="server/maintanence.png" alt="Server">
+                    <p>Server Maintenance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Secondary Big Image Popup -->
+    <div id="bigImagePopup" class="popup">
+        <span class="close" onclick="closePopup('bigImagePopup')">&times;</span>
+        <img id="bigImage" src="" alt="Big Image" style="max-width:90%; max-height:90%; border-radius:10px; display:block; margin:auto;">
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <article>
+            <h2>Contact Me</h2>
+            <form onsubmit="return validateForm()">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+                <input type="submit" value="Send Message">
+            </form>
+        </article>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <article>
+            <h2>FAQ / Comments</h2>
+            <div class="faq-item">
+                <button class="faq-question">What languages do you code in?</button>
+                <div class="faq-answer"><p>I mainly code in HTML, CSS, and JavaScript.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Can I contact you for projects?</button>
+                <div class="faq-answer"><p>Yes! You can send me a message using the contact form above.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Do you share tutorials?</button>
+                <div class="faq-answer"><p>Sometimes I post tutorials on my social media and GitHub.</p></div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Date Section -->
+    <section id="show-date" class="date-section">
+        <article>
+            <button onclick="showDate()">Click to see today's date</button>
+            <p id="date" class="date-display"></p>
+        </article>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Connect with me: 
+            <a href="https://www.instagram.com/senseinsem" target="_blank">Instagram</a> | 
+            <a href="https://www.tiktok.com/@senseinsem" target="_blank">TikTok</a> |
+            <a href="https://discord.gg/hzGdXXtx" target="_blank">Discord</a>
+        </p>
+        <p>&copy; 2025 SENSEI</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
