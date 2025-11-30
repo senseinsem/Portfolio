@@ -42,6 +42,7 @@ body {
     color: white;
     position: relative;
     z-index: 2;
+    animation: fadeInUp 1s ease;
 }
 
 .hero-content .profile-img {
@@ -51,17 +52,25 @@ body {
     border: 3px solid #fff;
     object-fit: cover;
     margin: 0 auto 20px;
+    animation: zoomIn 0.8s ease;
+    transition: transform 0.3s ease;
+}
+
+.hero-content .profile-img:hover {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .hero-content h1 {
     font-family: 'Crowk', sans-serif;
     color: #ffffff;
     font-size: 3.5rem;
+    animation: fadeInDown 0.8s ease;
 }
 
 .hero-content p {
     font-size: 1.4rem;
     opacity: 0.9;
+    animation: fadeIn 1.2s ease;
 }
 
 /* Navbar */
@@ -80,6 +89,24 @@ body {
     padding: 10px 18px;
     border-radius: 8px;
     transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #9fa63e;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.hero-content nav ul li a:hover::before {
+    width: 80%;
 }
 
 .hero-content nav ul li a:hover {
@@ -92,6 +119,8 @@ section {
     padding: 10px 20px;
     max-width: 950px;
     margin: auto;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
 }
 
 article {
@@ -166,6 +195,7 @@ article:hover {
     height: 100%;
     background-color: rgba(0,0,0,0.5);
     z-index: 1;
+    transition: background-color 0.3s ease;
 }
 
 /* Card content */
@@ -181,6 +211,7 @@ article:hover {
     width: 80px;
     border-radius: 10px;
     margin: 0 auto 10px;
+    transition: transform 0.3s ease;
 }
 
 .school-card h3 {
@@ -197,6 +228,13 @@ article:hover {
     box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
 
+.school-card:hover::before {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.school-card:hover img.school-logo {
+    transform: scale(1.1) rotate(5deg);
+}
 
 .school-logo {
     width: 80px;
@@ -253,6 +291,7 @@ form input[type="submit"] {
 
 form input[type="submit"]:hover {
     background-color: #2F455A;
+    transform: translateY(-2px);
 }
 
 /* FAQ */
@@ -274,6 +313,7 @@ form input[type="submit"]:hover {
 
 .faq-question:hover {
     background-color: #2F455A;
+    transform: translateX(5px);
 }
 
 .faq-answer {
@@ -308,6 +348,26 @@ form input[type="submit"]:hover {
     text-align: center;
     text-decoration: none;
     color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(74, 110, 153, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.skill-card:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .skill-card:hover {
@@ -319,6 +379,181 @@ form input[type="submit"]:hover {
     width: 160px;
     height: 100px;
     margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover img {
+    transform: rotateY(360deg);
+}
+
+.skill-card p {
+    position: relative;
+    z-index: 1;
+}
+
+/* Skills Progress Bar Section */
+.skills-progress {
+    margin-top: 40px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+}
+
+.skills-progress h3 {
+    text-align: center;
+    color: #4A6E99;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+.skill-item {
+    margin-bottom: 25px;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.skill-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.skill-percentage {
+    font-weight: bold;
+    color: #4A6E99;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 25px;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4A6E99, #94B6D8);
+    border-radius: 12px;
+    transition: width 2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Timeline Section */
+#timeline {
+    padding: 40px 20px;
+    max-width: 950px;
+    margin: auto;
+}
+
+.timeline-container {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #4A6E99, #94B6D8);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 50px;
+    position: relative;
+    opacity: 0;
+    animation: slideIn 0.8s ease forwards;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+    animation-delay: 0.2s;
+}
+
+.timeline-item:nth-child(even) {
+    animation-delay: 0.4s;
+}
+
+.timeline-content {
+    width: 45%;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(74, 110, 153, 0.15);
+    transition: 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(74, 110, 153, 0.25);
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: #4A6E99;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.timeline-title {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.timeline-description {
+    color: #666;
+    line-height: 1.6;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #4A6E99;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(74, 110, 153, 0.2);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 4px rgba(74, 110, 153, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(74, 110, 153, 0.1);
+    }
 }
 
 /* Popup */
@@ -332,6 +567,7 @@ form input[type="submit"]:hover {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.7);
+    animation: fadeIn 0.3s ease;
 }
 
 .popup-content {
@@ -342,6 +578,18 @@ form input[type="submit"]:hover {
     width: 80%;
     max-width: 800px;
     text-align: center;
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .close {
@@ -349,6 +597,12 @@ form input[type="submit"]:hover {
     font-size: 30px;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover {
+    color: #4A6E99;
+    transform: rotate(90deg);
 }
 
 .popup-grid {
@@ -371,7 +625,7 @@ form input[type="submit"]:hover {
 }
 
 .popup-card:hover {
-    transform: scale(1.2);
+    transform: scale(1.2) rotate(2deg);
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
@@ -410,18 +664,19 @@ form input[type="submit"]:hover {
 
 .date-section button:hover {
     background-color: #2F455A;
+    transform: scale(1.05);
 }
 
 .date-display {
-    max-height: 0;          /* hidden initially */
-    opacity: 0;             /* fully transparent */
+    max-height: 0;
+    opacity: 0;
     overflow: hidden;
     transition: max-height 0.5s ease, opacity 0.5s ease;
 }
 
 .date-display.show {
-    max-height: 100px;      /* enough height to show text */
-    opacity: 1;             /* visible */
+    max-height: 100px;
+    opacity: 1;
 }
 
 
@@ -438,10 +693,12 @@ footer a {
     color: #2F455A;
     font-weight: bold;
     text-decoration: none;
+    transition: 0.3s;
 }
 
 footer a:hover {
     color: #3EA64B;
+    transform: translateY(-2px);
 }
 
 /* Experience Section */
@@ -479,6 +736,11 @@ footer a:hover {
     margin-bottom: 15px;
     object-fit: cover;
     border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.experience-card:hover img {
+    transform: scale(1.05);
 }
 
 .experience-flex button,
@@ -496,6 +758,7 @@ footer a:hover {
 .experience-flex button:hover,
 .experience-card button:hover {
     background-color: #2F455A;
+    transform: translateY(-2px);
 }
 
 /* Theme switch button */
@@ -513,10 +776,14 @@ footer a:hover {
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    transition: background-color 0.3s;
-    z-index: 1000; /* ensures it’s always on top */
-    background-color: rgba(63, 63, 63, 0.9); /* slightly transparent for contrast */
-    backdrop-filter: blur(6px); /* optional: subtle blur of background behind */
+    transition: background-color 0.3s, transform 0.3s;
+    z-index: 1000;
+    background-color: rgba(63, 63, 63, 0.9);
+    backdrop-filter: blur(6px);
+}
+
+#theme-switch:hover {
+    transform: rotate(180deg) scale(1.1);
 }
 
 #theme-switch img {
@@ -538,6 +805,7 @@ button {
 button:hover {
     background-color: #2F455A;
 }
+
 body.lightmode {
     background-color: #DCEcff;
     color: #333;
@@ -545,23 +813,23 @@ body.lightmode {
 
 /* Dark mode */
 body.darkmode {
-    background-color: #1E1E2F; /* dark background */
-    color: #EEE; /* default text color */
+    background-color: #1E1E2F;
+    color: #EEE;
     transition: all 0.3s ease;
 }
 
-/* Articles/cards in dark mode */
 body.darkmode article,
 body.darkmode .experience-card,
 body.darkmode .skill-card,
-body.darkmode .school-card {
-    background-color: #2A2A3C; /* darker card background */
-    color: #EEE; /* light text */
+body.darkmode .school-card,
+body.darkmode .timeline-content {
+    background-color: #2A2A3C;
+    color: #EEE;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 body.lightmode button {
-    background-color: #4A6E99; /* your preferred light mode color */
+    background-color: #4A6E99;
     color: white;
 }
 
@@ -569,7 +837,6 @@ body.lightmode button:hover {
     background-color: #2F455A;
 }
 
-/* Table in dark mode */
 body.darkmode table {
     border-color: #555;
 }
@@ -584,7 +851,6 @@ body.darkmode td {
     color: #EEE;
 }
 
-/* Buttons in dark mode */
 body.darkmode button {
     background-color: #3A3A5A;
     color: #EEE;
@@ -594,13 +860,11 @@ body.darkmode button:hover {
     background-color: #555;
 }
 
-/* Popups in dark mode */
 body.darkmode .popup-content {
     background-color: #2A2A3C;
     color: #EEE;
 }
 
-/* FAQ in dark mode */
 body.darkmode .faq-question {
     background-color: #3A3A5A;
     color: #EEE;
@@ -610,19 +874,32 @@ body.darkmode .faq-answer {
     background-color: #2A2A3C;
     color: #EEE;
 }
-/* --- Dark Mode for Popup Cards --- */
+
 body.darkmode .popup-card {
-    background-color: #3A3A5A; /* dark background for individual cards */
-    color: #EEE; /* make text readable */
+    background-color: #3A3A5A;
+    color: #EEE;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 body.darkmode .popup-card p {
-    color: #EEE; /* ensures any text inside is readable */
+    color: #EEE;
 }
 
 body.darkmode .popup-card img {
-    border: 1px solid #555; /* optional for better contrast */
+    border: 1px solid #555;
+}
+
+body.darkmode .skills-progress {
+    background-color: #2A2A3C;
+}
+
+body.darkmode .skill-name,
+body.darkmode .timeline-title {
+    color: #EEE;
+}
+
+body.darkmode .timeline-description {
+    color: #CCC;
 }
 
 /* Loading Screen */
@@ -632,7 +909,7 @@ body.darkmode .popup-card img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #DCEcff; /* Light mode background */
+    background-color: #DCEcff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -641,7 +918,6 @@ body.darkmode .popup-card img {
     transition: opacity 0.5s ease;
 }
 
-/* Loading Text */
 #loading-screen .loading-text {
     font-size: 1.8rem;
     font-weight: bold;
@@ -650,36 +926,193 @@ body.darkmode .popup-card img {
     font-family: 'Crowk', sans-serif;
 }
 
-/* Bouncing Balls Container */
 .bouncing-balls {
     display: flex;
     gap: 12px;
 }
 
-/* Each Ball */
 .bouncing-balls .ball {
     width: 20px;
     height: 20px;
-    background-color: #4A6E99; /* your button color */
+    background-color: #4A6E99;
     border-radius: 50%;
     animation: bounce 1s infinite;
 }
 
-/* Stagger the animation for each ball */
 .bouncing-balls .ball:nth-child(1) { animation-delay: 0s; }
 .bouncing-balls .ball:nth-child(2) { animation-delay: 0.1s; }
 .bouncing-balls .ball:nth-child(3) { animation-delay: 0.2s; }
 .bouncing-balls .ball:nth-child(4) { animation-delay: 0.3s; }
 .bouncing-balls .ball:nth-child(5) { animation-delay: 0.4s; }
 
-/* Bounce Animation */
 @keyframes bounce {
     0%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-30px); } /* bounce height */
+    40% { transform: translateY(-30px); }
 }
 
-/* Fade Out Loader */
 #loading-screen.fade-out {
     opacity: 0;
     pointer-events: none;
+}
+
+/* Projects Section */
+#projects {
+    padding: 10px 20px;
+    max-width: 950px;
+    margin: auto;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.project-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(74, 110, 153, 0.15);
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(74, 110, 153, 0.25);
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.project-card h3 {
+    font-size: 1.3rem;
+    color: #4A6E99;
+    margin: 10px 0;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+    flex-grow: 1;
+}
+
+.project-tech {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #4A6E99;
+    background-color: #E8F2FF;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin: 8px 0;
+    font-weight: 600;
+}
+
+.project-card button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    background-color: #4A6E99;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 10px;
+}
+
+.project-card button:hover {
+    background-color: #2F455A;
+}
+
+.project-details {
+    text-align: left;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.project-details p {
+    margin: 8px 0;
+}
+
+.project-details strong {
+    color: #4A6E99;
+}
+
+body.darkmode .project-card {
+    background-color: #2A2A3C;
+    color: #EEE;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+body.darkmode .project-card h3 {
+    color: #94B6D8;
+}
+
+body.darkmode .project-card p {
+    color: #CCC;
+}
+
+body.darkmode .project-tech {
+    background-color: #3A3A5A;
+    color: #94B6D8;
+}
+
+body.darkmode .project-details {
+    background-color: #3A3A5A;
+    color: #EEE;
+}
+
+body.darkmode .project-details strong {
+    color: #94B6D8;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
