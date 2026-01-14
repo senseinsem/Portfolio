@@ -3,339 +3,526 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Alvian - Personal Webpage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Crowk&display=swap" rel="stylesheet">
+    <title>Alex Alvian - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="lightmode">
-
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loading-text">better with darkmode</div>
-        <div class="bouncing-balls">
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-        </div>
-    </div>
+<body class="dark-mode">
     
-    <button id="theme-switch">
-        <img id="theme-icon" src="mode/dark.png" alt="Toggle Theme">
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
     </button>
 
-    <!-- Header -->
-    <header id="hero-header">
-        <div class="hero-content">
-            <img src="alex.png" alt="My Photo" class="profile-img">
-            <h1>Alex Alvian</h1>
-            <p>Watch and Learning</p>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">University Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+    <div class="container">
+        <!-- Sidebar Profile Section -->
+        <aside class="sidebar">
+            <div class="profile-header">
+                <img src="alex.png" alt="Alex Alvian" class="profile-pic">
+                <h1 class="profile-name">Alex Alvian</h1>
+                <div class="profile-role">Computer Science Student</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">alex@example.com</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">+60 12-345 6789</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">Birthday</span>
+                        <span class="contact-value">January 1, 2000</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">Location</span>
+                        <span class="contact-value">Melaka, Malaysia</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.instagram.com/senseinsem" target="_blank" class="social-link" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@senseinsem" target="_blank" class="social-link" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://discord.gg/hzGdXXtx" target="_blank" class="social-link" title="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="#" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Section -->
+        <main class="main-content">
+            <!-- Navigation Tabs -->
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-tab="about">About Me</button>
+                <button class="nav-tab" data-tab="resume">Resume</button>
+                <button class="nav-tab" data-tab="portfolio">Portfolio</button>
+                <button class="nav-tab" data-tab="workshop">Workshop</button>
+                <button class="nav-tab" data-tab="gallery">Gallery</button>
+                <button class="nav-tab" data-tab="contact">Contact</button>
             </nav>
-        </div>
-    </header>
 
-    <!-- About Me -->
-    <section id="about">
-        <article>
-            <h2>About Me</h2>
-            <p>Hello! I enjoy coding and am constantly learning to improve my skills. 
-            I love creating animations and editing videos, and I sometimes play games and 
-            stream on social media. My ultimate goal is to keep pushing myself and reach 
-            milestones I have yet to achieve.</p>
-        </article>
-    </section>
-
-    <!-- Education -->
-    <section id="education">
-        <article>
-            <h2>Education</h2>
-            <table>
-                <tr>
-                    <th>Year</th>
-                    <th>Institution</th>
-                    <th>Degree</th>
-                </tr>
-                <tr>
-                    <td>2021-2023</td>
-                    <td>SMK Bukit Garam, Sabah</td>
-                    <td>Diploma in Business Studies</td>
-                </tr>
-                <tr>
-                    <td>2023-2027</td>
-                    <td>Technical University of Malaysia, Melaka</td>
-                    <td>Bachelor of Computer Science</td>
-                </tr>
-            </table>
-        </article>
-    </section>
-
-    <!-- Schools / University Section -->
-    <section id="schools">
-        <article>
-            <h2>Schools & University</h2>
-            <div class="schools-grid">
-                <!-- SMK Card -->
-                <div class="school-card" data-bg="education/smkbuilding.png" onclick="openPopup('smkPopup')">
-                    <img src="education/smkbg.png" alt="SMK Bukit Garam Logo" class="school-logo">
-                    <h3>SMK Bukit Garam, Sabah</h3>
-                </div>
-
-                <!-- UTeM Card -->
-                <div class="school-card" data-bg="education/ubuilding.png" onclick="openPopup('utemPopup')">
-                    <img src="education/utem.png" alt="UTeM Logo" class="school-logo">
-                    <h3>Technical University of Malaysia, Melaka</h3>
-                </div>
-            </div>
-        </article>
-    </section>
-
-    <!-- SMK Popup -->
-    <div id="smkPopup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('smkPopup')">&times;</span>
-            <h2>Capture Moments</h2>
-            <div class="popup-grid">
-                <div class="popup-card"><img src="education/smk/alex.png" alt="SMK Photo 1"><p>Photo 1</p></div>
-                <div class="popup-card"><img src="education/smk/1.png" alt="SMK Photo 2"><p>6A3</p></div>
-                <div class="popup-card"><img src="education/smk/2.png" alt="SMK Photo 3"><p>6A3</p></div>
-                <div class="popup-card"><img src="education/smk/3.png" alt="SMK Photo 3"><p>6A3</p></div>
-                <div class="popup-card"><img src="education/smk/4.png" alt="SMK Photo 3"><p>F6 Last Day</p></div>
-                <div class="popup-card"><img src="education/smk/5.png" alt="SMK Photo 3"><p>Shoot Film</p></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- UTeM Popup -->
-    <div id="utemPopup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('utemPopup')">&times;</span>
-            <h2>Capture Moments</h2>
-            <div class="popup-grid">
-                <div class="popup-card"><img src="education/utem/1.png" alt="UTeM Photo 1"><p>Entrepreneuship</p></div>
-                <div class="popup-card"><img src="education/utem/2.png" alt="UTeM Photo 2"><p>Entrepreneuship</p></div>
-                <div class="popup-card"><img src="education/utem/3.png" alt="UTeM Photo 3"><p>Breakfast</p></div>
-                <div class="popup-card"><img src="education/utem/4.png" alt="UTeM Photo 3"><p>Klebang</p></div>
-                <div class="popup-card"><img src="education/utem/5.png" alt="UTeM Photo 3"><p>Nando's</p></div>
-                <div class="popup-card"><img src="education/utem/6.png" alt="UTeM Photo 3"><p>Shoot Film</p></div>
-                <div class="popup-card"><img src="education/utem/7.png" alt="UTeM Photo 3"><p>Hiking</p></div>
-                <div class="popup-card"><img src="education/utem/8.png" alt="UTeM Photo 3"><p>Hiking</p></div>
-                <div class="popup-card"><img src="education/utem/9.png" alt="UTeM Photo 3"><p>Golf</p></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Skills & Hobbies with Popups -->
-    <section id="skills">
-        <article>
-            <h2>Skills & Hobbies</h2>
-            <div class="skill-grid">
-                <div class="skill-card" onclick="openPopup('htmlPopup')">
-                    <img src="coding.png" alt="Coding">
-                    <p>Coding</p>
-                </div>
-                <div class="skill-card" onclick="openPopup('designPopup')">
-                    <img src="gdesign.png" alt="Graphic Design">
-                    <p>Graphic Design</p>
-                </div>
-                <div class="skill-card" onclick="openPopup('gamingPopup')">
-                    <img src="pgame.png" alt="Gaming">
-                    <p>Playing Game</p>
-                </div>
-                <div class="skill-card" onclick="openPopup('streamPopup')">
-                    <img src="streaming.png" alt="Streaming">
-                    <p>Streaming</p>
-                </div>
-                <div class="skill-card" onclick="openPopup('animationPopup')">
-                    <img src="animator.png" alt="Animation">
-                    <p>Animation</p>
-                </div>
-                <div class="skill-card" onclick="openPopup('animePopup')">
-                    <img src="anime.png" alt="Anime">
-                    <p>Anime</p>
-                </div>
-            </div>
-
-            <!-- Skills Progress Bar Section -->
-            <div class="skills-progress">
-                <h3>Technical Proficiency</h3>
+            <!-- Content Area -->
+            <div class="content-area">
                 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">HTML5</span>
-                        <span class="skill-percentage">60%</span>
+                <!-- ===== ABOUT ME TAB ===== -->
+                <div class="tab-content active" id="about">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="about-text">
+                        Hello! I enjoy coding and am constantly learning to improve my skills. 
+                        I love creating animations and editing videos, and I sometimes play games and 
+                        stream on social media. My ultimate goal is to keep pushing myself and reach 
+                        milestones I have yet to achieve.
+                    </p>
+
+                    <!-- Skills & Hobbies Section -->
+                    <h3 class="subsection-title">Skills & Hobbies</h3>
+                    <div class="services-grid">
+                        <div class="service-card" onclick="openPopup('htmlPopup')">
+                            <div class="service-icon">
+                                <img src="coding.png" alt="Coding" style="width: 50px; height: 50px; object-fit: contain;">
+                            </div>
+                            <h4 class="service-title">Coding</h4>
+                            <p class="service-description">HTML, CSS, JavaScript and more programming languages.</p>
+                        </div>
+                        
+                        <div class="service-card" onclick="openPopup('designPopup')">
+                            <div class="service-icon">
+                                <img src="gdesign.png" alt="Graphic Design" style="width: 50px; height: 50px; object-fit: contain;">
+                            </div>
+                            <h4 class="service-title">Graphic Design</h4>
+                            <p class="service-description">Creating visual content with Photoshop and Illustrator.</p>
+                        </div>
+                        
+                        <div class="service-card" onclick="openPopup('gamingPopup')">
+                            <div class="service-icon">
+                                <img src="pgame.png" alt="Gaming" style="width: 50px; height: 50px; object-fit: contain;">
+                            </div>
+                            <h4 class="service-title">Playing Games</h4>
+                            <p class="service-description">Minecraft, Battlefield, Mobile Legends and more.</p>
+                        </div>
+                        
+                        <div class="service-card" onclick="openPopup('streamPopup')">
+                            <div class="service-icon">
+                                <img src="streaming.png" alt="Streaming" style="width: 50px; height: 50px; object-fit: contain;">
+                            </div>
+                            <h4 class="service-title">Streaming</h4>
+                            <p class="service-description">Live streaming on YouTube, Facebook, and TikTok.</p>
+                        </div>
+                        
+                        <div class="service-card" onclick="openPopup('animationPopup')">
+                            <div class="service-icon">
+                                <img src="animator.png" alt="Animation" style="width: 50px; height: 50px; object-fit: contain;">
+                            </div>
+                            <h4 class="service-title">Animation</h4>
+                            <p class="service-description">3D animation and motion graphics with Blender.</p>
+                        </div>
+                        
+                        <div class="service-card" onclick="openPopup('animePopup')">
+                            <div class="service-icon">
+                                <img src="anime.png" alt="Anime" style="width: 50px; height: 50px; object-fit: contain;">
+                            </div>
+                            <h4 class="service-title">Anime</h4>
+                            <p class="service-description">Watching anime series like One Piece, AOT, and more.</p>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width: 60%;"></div>
+
+                    <!-- Tools & Software Section -->
+                    <h3 class="subsection-title">Tools & Software</h3>
+                    <div class="tools-container">
+                        <div class="tools-scroll">
+                            <div class="tool-item">
+                                <i class="fab fa-adobe" style="color: #FF0000;"></i>
+                                <span>Adobe Photoshop</span>
+                            </div>
+                            <div class="tool-item">
+                                <i class="fab fa-adobe" style="color: #FF7C00;"></i>
+                                <span>Adobe Illustrator</span>
+                            </div>
+                            <div class="tool-item">
+                                <i class="fas fa-cube" style="color: #F5792A;"></i>
+                                <span>Blender</span>
+                            </div>
+                            <div class="tool-item">
+                                <i class="fab fa-adobe" style="color: #9999FF;"></i>
+                                <span>Premiere Pro</span>
+                            </div>
+                            <div class="tool-item">
+                                <i class="fas fa-code" style="color: #007ACC;"></i>
+                                <span>VS Code</span>
+                            </div>
+                            <div class="tool-item">
+                                <i class="fas fa-video" style="color: #302E31;"></i>
+                                <span>OBS Studio</span>
+                            </div>
+                            <div class="tool-item">
+                                <i class="fab fa-unity" style="color: #000000;"></i>
+                                <span>Unity</span>
+                            </div>
+                            <div class="tool-item">
+                                <i class="fas fa-gamepad" style="color: #0E1128;"></i>
+                                <span>Unreal Engine</span>
+                            </div>
+                            <div class="tool-item">
+                                <i class="fas fa-paint-brush" style="color: #FF69B4;"></i>
+                                <span>iBisPaint</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonials Section -->
+                    <h3 class="subsection-title">Testimonials</h3>
+                    <div class="testimonials-container">
+                        <div class="testimonials-scroll">
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">"Alex is an incredibly talented student. His dedication to learning and mastering new technologies is impressive. He's always willing to help classmates and share his knowledge."</p>
+                                <div class="testimonial-author">
+                                    <img src="https://ui-avatars.com/api/?name=Ahmad+Hassan&background=4a9eff&color=fff&size=100" alt="Ahmad Hassan" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>Ahmad Hassan</h4>
+                                        <p>Classmate, UTeM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">"Working with Alex on our web development project was amazing. He has great skills in both design and coding, and his creativity really brought our project to life!"</p>
+                                <div class="testimonial-author">
+                                    <img src="https://ui-avatars.com/api/?name=Sarah+Tan&background=4a9eff&color=fff&size=100" alt="Sarah Tan" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>Nazeem</h4>
+                                        <p>Project Partner, UTeM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">"Alex's 3D animation and Blender skills are outstanding. His attention to detail and creative approach make his work stand out. Definitely someone to watch in the animation field!"</p>
+                                <div class="testimonial-author">
+                                    <img src="https://ui-avatars.com/api/?name=Daniel+Lee&background=4a9eff&color=fff&size=100" alt="Daniel Lee" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>Fatihah</h4>
+                                        <p>Friend & Designer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical Proficiency Section -->
+                    <div class="skills-section">
+                        <h3 class="subsection-title">Technical Proficiency</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">HTML5</span>
+                                    <span class="skill-percentage">60%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">CSS3</span>
+                                    <span class="skill-percentage">60%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="skill-percentage">60%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Graphic Design</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Blender / 3D Animation</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Video Editing</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">CSS3</span>
-                        <span class="skill-percentage">60%</span>
+                <!-- ===== RESUME TAB ===== -->
+                <div class="tab-content" id="resume">
+                    <h2 class="section-title">Resume</h2>
+                    
+                    <!-- Education Section -->
+                    <div class="timeline-section">
+                        <h3 class="timeline-header">Education</h3>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2021 - 2023</span>
+                            <h4 class="timeline-title">Diploma in Business Studies</h4>
+                            <p class="timeline-subtitle">SMK Bukit Garam, Sabah</p>
+                            <p class="timeline-description">Completed diploma program with focus on business management and entrepreneurship.</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-year">2023 - 2027</span>
+                            <h4 class="timeline-title">Bachelor of Computer Science</h4>
+                            <p class="timeline-subtitle">Technical University of Malaysia, Melaka (UTeM)</p>
+                            <p class="timeline-description">Currently pursuing degree in Computer Science with specialization in software development and web technologies.</p>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width: 60%;"></div>
+
+                    <!-- Experience Section -->
+                    <div class="timeline-section">
+                        <h3 class="timeline-header">Experience</h3>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2022 - Present</span>
+                            <h4 class="timeline-title">Minecraft Server Management</h4>
+                            <p class="timeline-subtitle">Community Server Administrator</p>
+                            <p class="timeline-description">Managed a community Minecraft server, handling plugins, events, and player moderation. Ensured server stability, configured plugins, and organized engaging activities for players.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">JavaScript</span>
-                        <span class="skill-percentage">60%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width: 60%;"></div>
+                <!-- ===== PORTFOLIO TAB ===== -->
+                <div class="tab-content" id="portfolio">
+                    <h2 class="section-title">Portfolio</h2>
+                    
+                    <div class="portfolio-grid">
+                        <!-- Project 1 -->
+                        <div class="portfolio-item" onclick="openPopup('project1Popup')">
+                            <img src="projects/p1.png" alt="Web Development Project">
+                            <div class="portfolio-overlay">
+                                <h4>Web Development Project</h4>
+                                <p>HTML • CSS • JavaScript • C++</p>
+                                <div class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 2 -->
+                        <div class="portfolio-item" onclick="openPopup('project2Popup')">
+                            <img src="projects/p2.png" alt="Database Management System">
+                            <div class="portfolio-overlay">
+                                <h4>Database Management System</h4>
+                                <p>SQL • Database Design</p>
+                                <div class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 3 -->
+                        <div class="portfolio-item" onclick="openPopup('project3Popup')">
+                            <img src="projects/p3.png" alt="Animation Project">
+                            <div class="portfolio-overlay">
+                                <h4>Animation Project</h4>
+                                <p>Blender • Video Editing</p>
+                                <div class="portfolio-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Graphic Design</span>
-                        <span class="skill-percentage">80%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width: 80%;"></div>
+                <!-- ===== WORKSHOP TAB ===== -->
+                <div class="tab-content" id="workshop">
+                    <h2 class="section-title">Workshop</h2>
+                    <p class="about-text">Hands-on learning experience in multimedia production and 3D animation development.</p>
+                    
+                    <div class="workshop-grid">
+                        <div class="workshop-card-new" onclick="openWorkshopModal()">
+                            <div class="workshop-date-new">2024/2025</div>
+                            <h4 class="workshop-title-new">Workshop II | BITU 3923 SEM 1 2025/2026</h4>
+                            <p class="workshop-description-new">
+                                Produce and integrate multimedia elements into standalone projects using professional tools. Covering 3D animation, video editing, and creative product development with commercial features.
+                            </p>
+                            <div class="workshop-details-new">
+                                <span><i class="fas fa-clock"></i> Full Semester</span>
+                                <span><i class="fas fa-users"></i> UTeM Students</span>
+                            </div>
+                            <button class="workshop-btn-new">
+                                <span>VIEW GALLERY</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Blender / 3D Animation</span>
-                        <span class="skill-percentage">85%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width: 85%;"></div>
+                <!-- ===== GALLERY TAB ===== -->
+                <div class="tab-content" id="gallery">
+                    <h2 class="section-title">Gallery</h2>
+                    <p class="about-text">Memories and moments captured throughout my educational journey.</p>
+                    
+                    <!-- Schools Gallery Grid -->
+                    <div class="schools-gallery-grid">
+                        <!-- SMK Card -->
+                        <div class="school-gallery-card" onclick="openPopup('smkPopup')">
+                            <img src="education/smkbuilding.png" alt="SMK Bukit Garam" class="school-bg-image">
+                            <div class="school-overlay"></div>
+                            <div class="school-content">
+                                <img src="education/smkbg.png" alt="SMK Logo" class="school-logo-large">
+                                <h3 class="school-name">SMK Bukit Garam, Sabah</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- UTeM Card -->
+                        <div class="school-gallery-card" onclick="openPopup('utemPopup')">
+                            <img src="education/ubuilding.png" alt="UTeM" class="school-bg-image">
+                            <div class="school-overlay"></div>
+                            <div class="school-content">
+                                <img src="education/utem.png" alt="UTeM Logo" class="school-logo-large">
+                                <h3 class="school-name">Technical University of Malaysia, Melaka</h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Video Editing</span>
-                        <span class="skill-percentage">85%</span>
+                <!-- ===== CONTACT TAB ===== -->
+                <div class="tab-content" id="contact">
+                    <h2 class="section-title">Contact</h2>
+                    
+                    <div class="contact-container">
+                        <form class="contact-form" onsubmit="return validateForm()">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" placeholder="Enter your name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" placeholder="Enter your email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" placeholder="Enter subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="6" placeholder="Your message" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                        
+                        <div class="contact-info-box">
+                            <h3>Get In Touch</h3>
+                            <p>Feel free to reach out for collaborations, projects, or just to say hi!</p>
+                            <div class="contact-methods">
+                                <div class="method-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <h4>Email</h4>
+                                        <p>alex@example.com</p>
+                                    </div>
+                                </div>
+                                <div class="method-item">
+                                    <i class="fas fa-location-dot"></i>
+                                    <div>
+                                        <h4>Location</h4>
+                                        <p>Melaka, Malaysia</p>
+                                    </div>
+                                </div>
+                                <div class="method-item">
+                                    <i class="fab fa-instagram"></i>
+                                    <div>
+                                        <h4>Instagram</h4>
+                                        <p>@senseinsem</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width: 85%;"></div>
+
+                    <!-- Google Maps Section -->
+                    <div class="map-section">
+                        <h3 class="map-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            My Location
+                        </h3>
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.7738837843967!2d102.31850731475395!3d2.310990798408954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1e9acc8d2c0af%3A0x5dc09def5b2c968c!2sUniversiti%20Teknikal%20Malaysia%20Melaka!5e0!3m2!1sen!2smy!4v1642000000000!5m2!1sen!2smy" 
+                                width="100%" 
+                                height="450" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
                     </div>
                 </div>
+
             </div>
-        </article>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <article>
-            <h2>University Projects</h2>
-            <div class="projects-grid">
-                <!-- Project Card 1 -->
-                <div class="project-card" onclick="openPopup('project1Popup')">
-                    <img src="projects/p1.png" alt="Project 1">
-                    <h3>Web Development Project</h3>
-                    <p>Created a responsive website using HTML, CSS, JavaScript, and C++ with modern design principles.</p>
-                    <span class="project-tech">HTML • CSS • JavaScript • C++</span>
-                    <button onclick="openPopup('project1Popup')">View Details</button>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div class="project-card" onclick="openPopup('project2Popup')">
-                    <img src="projects/p2.png" alt="Project 2">
-                    <h3>Database Management System</h3>
-                    <p>Designed and implemented a database system for inventory management with SQL.</p>
-                    <span class="project-tech">SQL • Database Design</span>
-                    <button onclick="openPopup('project2Popup')">View Details</button>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div class="project-card" onclick="openPopup('project3Popup')">
-                    <img src="projects/p3.png" alt="Project 3">
-                    <h3>Workshop 2</h3>
-                    <p>Created an animated short film using Blender and video editing software.</p>
-                    <span class="project-tech">Blender • Video Editing</span>
-                    <button onclick="openPopup('project3Popup')">View Details</button>
-                </div>
-            </div>
-        </article>
-    </section>
-
-    <!-- Project Popups -->
-    <div id="project1Popup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('project1Popup')">&times;</span>
-            <h2>Web Development Project</h2>
-            <div class="project-details">
-                <p><strong>Course:</strong> Web Programming</p>
-                <p><strong>Year:</strong> 2024</p>
-                <p><strong>Description:</strong> Built a fully responsive portfolio website featuring modern UI/UX design, interactive elements, and smooth animations. The project demonstrates proficiency in front-end web development.</p>
-                <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript, Responsive Design</p>
-            </div>
-            <div class="popup-grid">
-                <div class="popup-card"><img src="projects/Web/1.png" alt="Screenshot 1"><p>Flying Drone-Lab Test 1</p></div>
-            </div>
-        </div>
+        </main>
     </div>
 
-    <div id="project2Popup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('project2Popup')">&times;</span>
-            <h2>Database Management System</h2>
-            <div class="project-details">
-                <p><strong>Course:</strong> Database Systems</p>
-                <p><strong>Year:</strong> 2024</p>
-                <p><strong>Description:</strong> Developed a comprehensive inventory management system with user authentication, data relationships, and query optimization.</p>
-                <p><strong>Technologies:</strong> MySQL, SQL, Database Design, ERD</p>
-            </div>
-            <div class="popup-grid">
-                <div class="popup-card"><img src="projects/db1.png" alt="Database 1"><p>ERD Diagram</p></div>
-                <div class="popup-card"><img src="projects/db2.png" alt="Database 2"><p>SQL Queries</p></div>
-                <div class="popup-card"><img src="projects/db3.png" alt="Database 3"><p>System Interface</p></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="project3Popup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('project3Popup')">&times;</span>
-            <h2>Animation Project</h2>
-            <div class="project-details">
-                <p><strong>Course:</strong> Multimedia Design</p>
-                <p><strong>Year:</strong> 2024</p>
-                <p><strong>Description:</strong> Created a 3D animated short film showcasing modeling, rigging, animation, and rendering techniques using Blender.</p>
-                <p><strong>Technologies:</strong> Blender, Video Editing, 3D Modeling</p>
-            </div>
-            <div class="popup-grid">
-                <div class="popup-card"><img src="projects/Blender/1.png" alt="Animation 1"><p>ReLive</p></div>
-                <div class="popup-card"><img src="projects/Blender/2.png" alt="Animation 2"><p>Character ReLive</p></div>
-                <div class="popup-card"><img src="projects/Blender/3.png" alt="Animation 2"><p>Animate Character</p></div>
-                <div class="popup-card"><img src="projects/Blender/5.png" alt="Animation 2"><p>Poster Re-Live</p></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Experience Section -->
-    <section id="experience">
-        <article>
-            <h2>Experience</h2>
-            <div class="experience-grid">
-                <div class="experience-card" onclick="openPopup('mcServerPopup')">
-                    <img src="server.png" alt="Minecraft Server">
-                    <h3>Minecraft Server Management</h3>
-                    <p>Managed a community Minecraft server, handling plugins, events, and player moderation. Ensured server stability, configured plugins, and organized engaging activities for players.</p>
-                    <button onclick="openPopup('mcServerPopup')">See</button>
-                </div>
-            </div>
-        </article>
-    </section>
-
-    <!-- Skill Popups -->
+    <!-- ===== POPUPS & MODALS ===== -->
+    
+    <!-- Skills Popups -->
     <div id="htmlPopup" class="popup">
         <div class="popup-content">
             <span class="close" onclick="closePopup('htmlPopup')">&times;</span>
@@ -380,8 +567,8 @@
             <h2>Streaming</h2>
             <div class="popup-grid">
                 <div class="popup-card"><img src="stream/yt.png" alt="YouTube"><p>YouTube</p></div>
-                <div class="popup-card"><img src="stream/fb.png" alt="Twitch"><p>Facebook</p></div>
-                <div class="popup-card"><img src="stream/tt.png" alt="OBS"><p>TikTok</p></div>
+                <div class="popup-card"><img src="stream/fb.png" alt="Facebook"><p>Facebook</p></div>
+                <div class="popup-card"><img src="stream/tt.png" alt="TikTok"><p>TikTok</p></div>
             </div>
         </div>
     </div>
@@ -412,99 +599,145 @@
         </div>
     </div>
 
-    <div id="mcServerPopup" class="popup">
+    <!-- Project Popups -->
+    <div id="project1Popup" class="popup">
         <div class="popup-content">
-            <span class="close" onclick="closePopup('mcServerPopup')">&times;</span>
-            <h2>Minecraft Server Management</h2>
+            <span class="close" onclick="closePopup('project1Popup')">&times;</span>
+            <h2>Web Development Project</h2>
+            <div class="project-details">
+                <p><strong>Course:</strong> Web Programming</p>
+                <p><strong>Year:</strong> 2024</p>
+                <p><strong>Description:</strong> Built a fully responsive portfolio website featuring modern UI/UX design, interactive elements, and smooth animations. The project demonstrates proficiency in front-end web development.</p>
+                <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript, Responsive Design</p>
+            </div>
             <div class="popup-grid">
-                <div class="popup-card">
-                    <img src="server/plugins.png" alt="Plugins">
-                    <p>Installed & Configured Plugins</p>
+                <div class="popup-card"><img src="projects/Web/1.png" alt="Screenshot 1"><p>Flying Drone-Lab Test 1</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="project2Popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('project2Popup')">&times;</span>
+            <h2>Database Management System</h2>
+            <div class="project-details">
+                <p><strong>Course:</strong> Database Systems</p>
+                <p><strong>Year:</strong> 2024</p>
+                <p><strong>Description:</strong> Developed a comprehensive inventory management system with user authentication, data relationships, and query optimization.</p>
+                <p><strong>Technologies:</strong> MySQL, SQL, Database Design, ERD</p>
+            </div>
+            <div class="popup-grid">
+            </div>
+        </div>
+    </div>
+
+    <div id="project3Popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('project3Popup')">&times;</span>
+            <h2>Animation Project</h2>
+            <div class="project-details">
+                <p><strong>Course:</strong> Multimedia Design</p>
+                <p><strong>Year:</strong> 2024</p>
+                <p><strong>Description:</strong> Created a 3D animated short film showcasing modeling, rigging, animation, and rendering techniques using Blender.</p>
+                <p><strong>Technologies:</strong> Blender, Video Editing, 3D Modeling</p>
+            </div>
+            <div class="popup-grid">
+                <div class="popup-card"><img src="projects/Blender/1.png" alt="Animation 1"><p>ReLive</p></div>
+                <div class="popup-card"><img src="projects/Blender/2.png" alt="Animation 2"><p>Character ReLive</p></div>
+                <div class="popup-card"><img src="projects/Blender/3.png" alt="Animation 3"><p>Animated for Video TikTok</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Popups -->
+    <div id="smkPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('smkPopup')">&times;</span>
+            <h2>SMK Bukit Garam - Capture Moments</h2>
+            <div class="popup-grid">
+                <div class="popup-card"><img src="education/smk/alex.png" alt="SMK Photo 1"><p>Photo 1</p></div>
+                <div class="popup-card"><img src="education/smk/1.png" alt="SMK Photo 2"><p>6A3</p></div>
+                <div class="popup-card"><img src="education/smk/2.png" alt="SMK Photo 3"><p>6A3</p></div>
+                <div class="popup-card"><img src="education/smk/3.png" alt="SMK Photo 4"><p>6A3</p></div>
+                <div class="popup-card"><img src="education/smk/4.png" alt="SMK Photo 5"><p>F6 Last Day</p></div>
+                <div class="popup-card"><img src="education/smk/5.png" alt="SMK Photo 6"><p>Shoot Film</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="utemPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('utemPopup')">&times;</span>
+            <h2>UTeM - Capture Moments</h2>
+            <div class="popup-grid">
+                <div class="popup-card"><img src="education/utem/1.png" alt="UTeM Photo 1"><p>Entrepreneurship</p></div>
+                <div class="popup-card"><img src="education/utem/2.png" alt="UTeM Photo 2"><p>Entrepreneurship</p></div>
+                <div class="popup-card"><img src="education/utem/3.png" alt="UTeM Photo 3"><p>Photo 3</p></div>
+                <div class="popup-card"><img src="education/utem/4.png" alt="UTeM Photo 4"><p>Klebang</p></div>
+                <div class="popup-card"><img src="education/utem/5.png" alt="UTeM Photo 5"><p>Nando's</p></div>
+                <div class="popup-card"><img src="education/utem/6.png" alt="UTeM Photo 6"><p>Shoot Film</p></div>
+                <div class="popup-card"><img src="education/utem/7.png" alt="UTeM Photo 7"><p>Hiking</p></div>
+                <div class="popup-card"><img src="education/utem/8.png" alt="UTeM Photo 8"><p>Hiking</p></div>
+                <div class="popup-card"><img src="education/utem/9.jpg" alt="UTeM Photo 8"><p>Golf</p></div>
+                <div class="popup-card"><img src="education/utem/10.jpg" alt="UTeM Photo 8"><p>Exhibitions</p></div>
+                <div class="popup-card"><img src="education/utem/11.jpg" alt="UTeM Photo 8"><p>Exhibitions</p></div>
+                <div class="popup-card"><img src="education/utem/12.jpg" alt="UTeM Photo 8"><p>Exhibitions</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Big Image Popup for clicking images -->
+    <div id="bigImagePopup" class="popup" style="display: none;">
+        <span class="close" onclick="closePopup('bigImagePopup')">&times;</span>
+        <img id="bigImage" src="" alt="Big Image" style="max-width:90%; max-height:90%; border-radius:10px; display:block; margin:auto;">
+    </div>
+
+    <!-- Workshop Modal -->
+    <div id="workshopModal" class="workshop-modal">
+        <div class="workshop-modal-overlay" onclick="closeWorkshopModal()"></div>
+        <div class="workshop-modal-content">
+            <button class="workshop-modal-close" onclick="closeWorkshopModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="workshop-modal-header">
+                <div class="workshop-date-badge">2024/2025</div>
+                <h2 class="workshop-modal-title">Workshop II | BITU 3923 SEM 1 2025/2026</h2>
+                <p class="workshop-modal-description">
+                    Produce, create, edit and use multimedia elements that are compatible with developed projects. Integrates all the multimedia elements used in generating a single standalone end product. Use and operate multimedia tools and software well. Presenting creative work through exhibitions. Develop a product that has commercial features.
+                </p>
+                <div class="workshop-modal-info">
+                    <span><i class="fas fa-clock"></i> Full Semester</span>
+                    <span><i class="fas fa-users"></i> UTeM Students</span>
                 </div>
-                <div class="popup-card">
-                    <img src="server/player.png" alt="Moderation">
-                    <p>Player Moderation</p>
-                </div>
-                <div class="popup-card">
-                    <img src="server/event.png" alt="Events">
-                    <p>Organized Community Events</p>
-                </div>
-                <div class="popup-card">
-                    <img src="server/maintanence.png" alt="Server">
-                    <p>Server Maintenance</p>
-                </div>
-                <div class="popup-card">
-                    <img src="server/error.png" alt="Server">
-                    <p>Fixing Error</p>
+            </div>
+            
+            <div class="workshop-modal-body">
+                <h3 class="workshop-gallery-title">WORKSHOP GALLERY</h3>
+                <div class="workshop-gallery-grid">
+                    <div class="workshop-gallery-item" onclick="openWorkshopImage('projects/Blender/1.png')">
+                        <img src="projects/Blender/1.png" alt="ReLive">
+                        <div class="workshop-gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="workshop-gallery-item" onclick="openWorkshopImage('projects/Blender/2.png')">
+                        <img src="projects/Blender/2.png" alt="Character ReLive">
+                        <div class="workshop-gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="workshop-gallery-item" onclick="openWorkshopImage('projects/Blender/3.png')">
+                        <img src="projects/Blender/3.png" alt="Animated for TikTok">
+                        <div class="workshop-gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="bigImagePopup" class="popup">
-        <span class="close" onclick="closePopup('bigImagePopup')">&times;</span>
-        <img id="bigImage" src="" alt="Big Image" style="max-width:90%; max-height:90%; border-radius:10px; display:block; margin:auto;">
-    </div>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <article>
-            <h2>Contact Me</h2>
-            <form onsubmit="return validateForm()">
-                <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="Your Name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Your Email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
-                <input type="submit" value="Send Message">
-            </form>
-        </article>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq">
-        <article>
-            <h2>FAQ / Comments</h2>
-            <div class="faq-item">
-                <button class="faq-question">What languages do you code in?</button>
-                <div class="faq-answer"><p>I mainly code in HTML, CSS, and JavaScript.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">Can I contact you for projects?</button>
-                <div class="faq-answer"><p>Yes! You can send me a message using the contact form above.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">Do you share tutorials?</button>
-                <div class="faq-answer"><p>Sometimes I post tutorials on my social media and GitHub.</p></div>
-            </div>
-        </article>
-    </section>
-
-    <!-- Date Section -->
-    <section id="show-date" class="date-section">
-        <article>
-            <button onclick="showDate()">Click to see today's date</button>
-            <p id="date" class="date-display"></p>
-        </article>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>Connect with me: 
-            <a href="https://www.instagram.com/senseinsem" target="_blank">Instagram</a> | 
-            <a href="https://www.tiktok.com/@senseinsem" target="_blank">TikTok</a> |
-        </p>
-        <p>&copy; 2025 SENSEI</p>
-    </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
