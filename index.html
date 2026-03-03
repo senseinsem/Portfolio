@@ -92,6 +92,7 @@
                 <button class="nav-tab" data-tab="resume">Resume</button>
                 <button class="nav-tab" data-tab="portfolio">Portfolio</button>
                 <button class="nav-tab" data-tab="workshop">Workshop</button>
+                <button class="nav-tab" data-tab="fyp">FYP</button>
                 <button class="nav-tab" data-tab="gallery">Gallery</button>
                 <button class="nav-tab" data-tab="contact">Contact</button>
             </nav>
@@ -408,6 +409,49 @@
                     </div>
                 </div>
 
+                <!-- ===== FYP TAB ===== -->
+            <div class="tab-content" id="fyp">
+                <div class="fyp-header-row">
+            <div>
+                <h2 class="section-title">Final Year Project</h2>
+                <p class="about-text">My FYP journey — documenting progress, milestones, and the process of building my final year project from start to finish.</p>
+            </div>
+            <button class="fyp-admin-btn" onclick="openAdminPanel()">
+            <i class="fas fa-lock"></i>
+            <span>Admin</span>
+        </button>
+    </div>
+
+
+       <!-- FYP Project Card -->
+    <div id="fypProjectCard" class="fyp-project-card" onclick="openFYPJourney()">
+        <div class="fyp-card-thumbnail-wrap">
+<img src="fyp/LEFTENANADNAN.png" alt="FYP Thumbnail" class="fyp-card-thumbnail">
+            <div class="fyp-card-thumbnail-placeholder" id="fypThumbPlaceholder">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+        </div>
+        <div class="fyp-card-body">
+            <div class="fyp-card-badge">Final Year Project</div>
+            <h3 class="fyp-card-title" id="fypTitleDisplay">My Final Year Project</h3>
+            <p class="fyp-card-desc" id="fypDescDisplay">Click to view my FYP journey and progress updates.</p>
+            <div class="fyp-card-meta">
+                <span id="fypEntryCount"><i class="fas fa-calendar-check"></i> 0 entries</span>
+                <span id="fypYearDisplay"><i class="fas fa-clock"></i> 2025 - 2026</span>
+            </div>
+            <div class="fyp-card-cta">
+                <span>View Journey</span>
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- No entries placeholder -->
+    <div id="fypEmptyState" class="fyp-empty-state" style="display:none;">
+        <i class="fas fa-folder-open"></i>
+        <p>No journey entries yet. Use Admin panel to add your first entry!</p>
+    </div>
+</div>
                 <!-- ===== GALLERY TAB ===== -->
                 <div class="tab-content" id="gallery">
                     <h2 class="section-title">Gallery</h2>
@@ -745,9 +789,182 @@
         </div>
     </div>
 
+
+    
+<!-- FYP Journey Modal (Timeline View) -->
+<div id="fypJourneyModal" class="fyp-modal">
+    <div class="fyp-modal-overlay" onclick="closeFYPJourney()"></div>
+    <div class="fyp-modal-content">
+        <button class="fyp-modal-close" onclick="closeFYPJourney()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="fyp-journey-header">
+            <div class="fyp-journey-badge">Journey Timeline</div>
+            <h2 class="fyp-journey-title" id="fypJourneyTitle">My FYP Journey</h2>
+            <p class="fyp-journey-subtitle" id="fypJourneySubtitle">Progress updates and milestones</p>
+        </div>
+        <div class="fyp-timeline-wrapper">
+            <div class="fyp-timeline-track" id="fypTimelineTrack">
+                <!-- Timeline entries injected by JS -->
+            </div>
+        </div>
+        <div class="fyp-timeline-hint">
+            <i class="fas fa-hand-pointer"></i> Klik entry untuk lihat detail &nbsp;|&nbsp;
+            <i class="fas fa-arrows-left-right"></i> Scroll kiri/kanan
+        </div>
+    </div>
+</div>
+
+<!-- FYP Entry Detail Modal -->
+<div id="fypDetailModal" class="fyp-modal fyp-detail-modal">
+    <div class="fyp-modal-overlay" onclick="closeFYPDetail()"></div>
+    <div class="fyp-modal-content fyp-detail-content">
+        <button class="fyp-modal-close" onclick="closeFYPDetail()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="fyp-detail-header">
+            <div class="fyp-detail-date-badge" id="fypDetailDateBadge">8 Mac 2026</div>
+            <h2 class="fyp-detail-title" id="fypDetailTitle">Entry Title</h2>
+            <p class="fyp-detail-desc" id="fypDetailDesc">Description here</p>
+        </div>
+        <div class="fyp-detail-images" id="fypDetailImages">
+            <!-- Images injected by JS -->
+        </div>
+    </div>
+</div>
+
+<!-- FYP Admin Panel Modal -->
+<div id="fypAdminModal" class="fyp-modal fyp-admin-modal">
+    <div class="fyp-modal-overlay" onclick="closeFYPAdmin()"></div>
+    <div class="fyp-modal-content fyp-admin-content">
+        <button class="fyp-modal-close" onclick="closeFYPAdmin()">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <!-- Login Screen -->
+        <div id="fypAdminLogin" class="fyp-admin-section">
+            <div class="fyp-admin-lock-icon"><i class="fas fa-lock"></i></div>
+            <h2 class="fyp-admin-title">Admin Panel</h2>
+            <p class="fyp-admin-subtitle">Enter password to manage FYP content</p>
+            <div class="fyp-admin-login-form">
+                <input type="password" id="fypAdminPassword" placeholder="Enter admin password" class="fyp-admin-input" onkeydown="if(event.key==='Enter') verifyAdminPassword()">
+                <button class="fyp-admin-submit-btn" onclick="verifyAdminPassword()">
+                    <i class="fas fa-unlock"></i> Login
+                </button>
+            </div>
+            <p class="fyp-admin-hint">Default password: <strong>fyp2026</strong></p>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="fypAdminDashboard" class="fyp-admin-section" style="display:none;">
+            <div class="fyp-admin-dash-header">
+                <h2 class="fyp-admin-title">FYP Admin Panel</h2>
+                <button class="fyp-admin-logout-btn" onclick="logoutAdmin()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+
+            <!-- Project Settings -->
+            <div class="fyp-admin-block">
+                <h3 class="fyp-admin-block-title"><i class="fas fa-cog"></i> Project Settings</h3>
+                <div class="fyp-admin-form-grid">
+                    <div class="fyp-admin-form-group">
+                        <label>Project Title</label>
+                        <input type="text" id="adminProjectTitle" placeholder="e.g. Smart Campus System" class="fyp-admin-input">
+                    </div>
+                    <div class="fyp-admin-form-group">
+                        <label>Year Range</label>
+                        <input type="text" id="adminProjectYear" placeholder="e.g. 2025 - 2026" class="fyp-admin-input">
+                    </div>
+                    <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                        <label>Project Description</label>
+                        <textarea id="adminProjectDesc" placeholder="Brief description of your FYP project..." class="fyp-admin-textarea" rows="3"></textarea>
+                    </div>
+                    <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                        <label>Thumbnail URL (optional)</label>
+                        <input type="text" id="adminProjectThumb" placeholder="https://... or leave empty" class="fyp-admin-input">
+                    </div>
+                </div>
+                <button class="fyp-admin-save-btn" onclick="saveProjectSettings()">
+                    <i class="fas fa-save"></i> Save Settings
+                </button>
+            </div>
+
+            <!-- Add New Journey Entry -->
+            <div class="fyp-admin-block">
+                <h3 class="fyp-admin-block-title"><i class="fas fa-plus-circle"></i> Add New Journey Entry</h3>
+                <div class="fyp-admin-form-grid">
+                    <div class="fyp-admin-form-group">
+                        <label>Date</label>
+                        <input type="date" id="adminEntryDate" class="fyp-admin-input">
+                    </div>
+                    <div class="fyp-admin-form-group">
+                        <label>Entry Title</label>
+                        <input type="text" id="adminEntryTitle" placeholder="e.g. Literature Review" class="fyp-admin-input">
+                    </div>
+                    <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                        <label>Description</label>
+                        <textarea id="adminEntryDesc" placeholder="What did you do on this date?" class="fyp-admin-textarea" rows="3"></textarea>
+                    </div>
+                    <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+    <label>Thumbnail Image (for timeline)</label>
+    <div class="fyp-drop-zone" id="thumbDropZone" onclick="document.getElementById('thumbFileInput').click()">
+        <input type="file" id="thumbFileInput" accept="image/*" style="display:none" onchange="handleThumbFile(this)">
+        <div class="fyp-drop-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+        <p class="fyp-drop-text">Drag & drop gambar atau <span>klik untuk pilih</span></p>
+        <p class="fyp-drop-hint">PNG, JPG, WEBP</p>
+        <img id="thumbPreview" class="fyp-drop-preview" style="display:none">
+        <button type="button" class="fyp-drop-clear" id="thumbClearBtn" style="display:none" onclick="clearThumb(event)">
+            <i class="fas fa-times"></i> Buang
+        </button>
+    </div>
+    <input type="hidden" id="adminEntryThumb">
+</div>
+
+<div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+    <label>Detail Images</label>
+    <div class="fyp-drop-zone fyp-drop-multi" id="detailDropZone" onclick="document.getElementById('detailFileInput').click()">
+        <input type="file" id="detailFileInput" accept="image/*" multiple style="display:none" onchange="handleDetailFiles(this)">
+        <div class="fyp-drop-icon"><i class="fas fa-images"></i></div>
+        <p class="fyp-drop-text">Drag & drop gambar atau <span>klik untuk pilih</span></p>
+        <p class="fyp-drop-hint">Boleh pilih banyak gambar sekaligus</p>
+    </div>
+    <div id="detailPreviewGrid" class="fyp-detail-preview-grid"></div>
+    <input type="hidden" id="adminEntryImages">
+</div>
+
+                    <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                        <label>Image Captions (one per line, same order as images)</label>
+                        <textarea id="adminEntryCaptions" placeholder="Screenshot of diagram&#10;Meeting notes&#10;Code review" class="fyp-admin-textarea" rows="4"></textarea>
+                    </div>
+                </div>
+                <button class="fyp-admin-save-btn" onclick="addJourneyEntry()">
+                    <i class="fas fa-plus"></i> Add Entry
+                </button>
+            </div>
+
+            <!-- Existing Entries -->
+            <div class="fyp-admin-block">
+                <h3 class="fyp-admin-block-title"><i class="fas fa-list"></i> Manage Entries</h3>
+                <div id="adminEntriesList" class="fyp-admin-entries-list">
+                    <!-- Entries listed here by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FYP Image Lightbox -->
+<div id="fypLightbox" class="fyp-lightbox">
+    <div class="fyp-lightbox-overlay" onclick="closeFYPLightbox()"></div>
+    <button class="fyp-lightbox-close" onclick="closeFYPLightbox()"><i class="fas fa-times"></i></button>
+    <img id="fypLightboxImg" src="" alt="" class="fyp-lightbox-img">
+    <p id="fypLightboxCaption" class="fyp-lightbox-caption"></p>
+</div>
+
+
     <script src="script.js"></script>
 </body>
 </html>
-
 
 
