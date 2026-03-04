@@ -1,5 +1,37 @@
-// ===== THEME TOGGLE =====
-document.addEventListener('DOMContentLoaded', function() {
+// ===== LOADING SCREEN =====
+window.addEventListener('load', function () {
+    const loader = document.getElementById('loadingScreen');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('hide');
+            setTimeout(() => loader.remove(), 600);
+        }, 1800);
+    }
+});
+
+// ===== BACK TO TOP BUTTON =====
+function initBackToTop() {
+    const btn = document.getElementById('backToTopBtn');
+    if (!btn) return;
+    const contentArea = document.querySelector('.content-area');
+    if (contentArea) {
+        contentArea.addEventListener('scroll', () => {
+            if (contentArea.scrollTop > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+    }
+    btn.addEventListener('click', () => {
+        const contentArea = document.querySelector('.content-area');
+        if (contentArea) contentArea.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    // ===== THEME TOGGLE =====
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
     const themeIcon = themeToggle.querySelector('i');
@@ -29,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ===== TAB NAVIGATION =====
+    // ===== TAB NAVIGATION WITH SMOOTH TRANSITION =====
     const navTabs = document.querySelectorAll('.nav-tab');
     const tabContents = document.querySelectorAll('.tab-content');
 
@@ -42,22 +74,43 @@ document.addEventListener('DOMContentLoaded', function() {
     navTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
             e.preventDefault();
-            navTabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                content.style.display = 'none';
-            });
-            tab.classList.add('active');
-            const tabId = tab.getAttribute('data-tab');
-            const targetContent = document.getElementById(tabId);
-            if (targetContent) {
-                targetContent.style.display = 'block';
-                void targetContent.offsetWidth;
-                targetContent.classList.add('active');
-            }
-            const contentArea = document.querySelector('.content-area');
-            if (contentArea) {
-                contentArea.scrollTop = 0;
+
+            const currentActive = document.querySelector('.tab-content.active');
+            if (currentActive) {
+                currentActive.classList.add('fade-out');
+                setTimeout(() => {
+                    navTabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => {
+                        content.classList.remove('active', 'fade-out');
+                        content.style.display = 'none';
+                    });
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab');
+                    const targetContent = document.getElementById(tabId);
+                    if (targetContent) {
+                        targetContent.style.display = 'block';
+                        void targetContent.offsetWidth;
+                        targetContent.classList.add('active');
+                    }
+                    const contentArea = document.querySelector('.content-area');
+                    if (contentArea) contentArea.scrollTop = 0;
+                }, 200);
+            } else {
+                navTabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.style.display = 'none';
+                });
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                const targetContent = document.getElementById(tabId);
+                if (targetContent) {
+                    targetContent.style.display = 'block';
+                    void targetContent.offsetWidth;
+                    targetContent.classList.add('active');
+                }
+                const contentArea = document.querySelector('.content-area');
+                if (contentArea) contentArea.scrollTop = 0;
             }
         });
     });
@@ -70,9 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (progressBar) {
                     const width = progressBar.style.width;
                     progressBar.style.width = '0%';
-                    setTimeout(() => {
-                        progressBar.style.width = width;
-                    }, 100);
+                    setTimeout(() => { progressBar.style.width = width; }, 100);
                 }
             }
         });
@@ -83,11 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -95,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     const animateElements = document.querySelectorAll('.service-card, .timeline-item, .skill-item, .portfolio-item, .workshop-card');
     animateElements.forEach(el => {
@@ -105,35 +151,40 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // ===== HORIZONTAL SCROLL FOR TOOLS & TESTIMONIALS =====
+    // ===== HORIZONTAL SCROLL =====
     const toolsScroll = document.querySelector('.tools-scroll');
-    if (toolsScroll) {
-        setupHorizontalScroll(toolsScroll);
-    }
-
+    if (toolsScroll) setupHorizontalScroll(toolsScroll);
     const testimonialsScroll = document.querySelector('.testimonials-scroll');
-    if (testimonialsScroll) {
-        setupHorizontalScroll(testimonialsScroll);
-    }
+    if (testimonialsScroll) setupHorizontalScroll(testimonialsScroll);
 
-    // ===== CONTACT FORM SUBMISSION =====
+    // ===== CONTACT FORM — IMPROVED STATUS =====
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
+            const originalHTML = submitBtn.innerHTML;
+
+            // Show sending state
             submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
             submitBtn.disabled = true;
+            submitBtn.classList.add('btn-sending');
+
             setTimeout(() => {
-                submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
-                submitBtn.style.opacity = '0.8';
+                // Show success state
+                submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check-circle"></i>';
+                submitBtn.classList.remove('btn-sending');
+                submitBtn.classList.add('btn-success');
+
+                // Show success notification
+                showContactSuccess();
+
                 setTimeout(() => {
                     contactForm.reset();
-                    submitBtn.innerHTML = originalText;
+                    submitBtn.innerHTML = originalHTML;
                     submitBtn.disabled = false;
-                    submitBtn.style.opacity = '1';
-                }, 2000);
+                    submitBtn.classList.remove('btn-success');
+                }, 3500);
             }, 1500);
         });
     }
@@ -158,18 +209,78 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ===== PORTFOLIO FILTER =====
+    initPortfolioFilter();
+
+    // ===== BACK TO TOP =====
+    initBackToTop();
+
     // ===== INIT FYP =====
     renderFYPCard();
-
     const fypTab = document.querySelector('[data-tab="fyp"]');
     if (fypTab) {
-        fypTab.addEventListener('click', function() {
-            renderFYPCard();
-        });
+        fypTab.addEventListener('click', function () { renderFYPCard(); });
     }
 
-}); // <-- END of DOMContentLoaded
+    // ===== INIT DROP ZONES on admin open =====
+    // Will be called when admin panel opens
 
+}); // END DOMContentLoaded
+
+
+// ===== CONTACT SUCCESS NOTIFICATION =====
+function showContactSuccess() {
+    const existing = document.getElementById('contactSuccessNotif');
+    if (existing) existing.remove();
+
+    const notif = document.createElement('div');
+    notif.id = 'contactSuccessNotif';
+    notif.innerHTML = `
+        <div class="contact-success-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="contact-success-text">
+            <strong>Message Sent Successfully!</strong>
+            <span>Thank you! I'll get back to you soon.</span>
+        </div>
+        <button onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
+    `;
+    notif.className = 'contact-success-notif';
+    document.body.appendChild(notif);
+
+    setTimeout(() => {
+        notif.classList.add('show');
+    }, 100);
+
+    setTimeout(() => {
+        notif.classList.remove('show');
+        setTimeout(() => notif.remove(), 400);
+    }, 5000);
+}
+
+// ===== PORTFOLIO FILTER =====
+function initPortfolioFilter() {
+    const filterContainer = document.getElementById('portfolioFilters');
+    const portfolioItems = document.querySelectorAll('.portfolio-item[data-category]');
+    if (!filterContainer || portfolioItems.length === 0) return;
+
+    filterContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+
+        filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        portfolioItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                item.style.display = 'block';
+                item.style.animation = 'filterIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+}
 
 // ===== POPUP FUNCTIONS =====
 function openPopup(id) {
@@ -188,21 +299,15 @@ function closePopup(id) {
     }
 }
 
-// ===== WORKSHOP MODAL FUNCTIONS =====
+// ===== WORKSHOP MODAL =====
 function openWorkshopModal() {
     const modal = document.getElementById('workshopModal');
-    if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+    if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
 }
 
 function closeWorkshopModal() {
     const modal = document.getElementById('workshopModal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+    if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
 }
 
 function openWorkshopImage(imageSrc) {
@@ -222,16 +327,12 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Close popup with Escape key
+// Close with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        document.querySelectorAll('.popup').forEach(popup => {
-            popup.style.display = 'none';
-        });
+        document.querySelectorAll('.popup').forEach(popup => { popup.style.display = 'none'; });
         const workshopModal = document.getElementById('workshopModal');
-        if (workshopModal && workshopModal.classList.contains('active')) {
-            closeWorkshopModal();
-        }
+        if (workshopModal && workshopModal.classList.contains('active')) closeWorkshopModal();
         closeFYPLightbox();
         closeFYPDetail();
         closeFYPJourney();
@@ -240,19 +341,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ===== FORM VALIDATION =====
-function validateForm() {
-    const name = document.getElementById('name')?.value.trim();
-    const email = document.getElementById('email')?.value.trim();
-    const message = document.getElementById('message')?.value.trim();
-    if (!name || !email || !message) {
-        alert("Please fill out all fields.");
-        return false;
-    }
-    return true;
-}
-
-// ===== PARALLAX EFFECT FOR PROFILE PICTURE =====
+// ===== PARALLAX FOR PROFILE PIC =====
 window.addEventListener('mousemove', (e) => {
     const profilePic = document.querySelector('.profile-pic');
     if (profilePic && window.innerWidth > 768) {
@@ -262,113 +351,93 @@ window.addEventListener('mousemove', (e) => {
     }
 });
 
-// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+// ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         if (href !== '#' && href.length > 1) {
             e.preventDefault();
             const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
 
 // ===== CONSOLE MESSAGE =====
 console.log('%c🎨 Portfolio Website ', 'background: #3B82F6; color: #ffffff; font-size: 20px; padding: 10px; border-radius: 5px; font-weight: bold;');
-console.log('%cDesigned with passion • Built with modern web technologies', 'color: #3B82F6; font-size: 14px; font-weight: 600;');
-console.log('%cDark/Light Mode • Smooth Animations • Responsive Design', 'color: #64748b; font-size: 12px;');
 
-// ===== HORIZONTAL SCROLL SETUP FUNCTION =====
-// NOTE: This function definition ends with its own closing brace ONLY.
-// Do NOT put any other code inside this function.
+// ===== HORIZONTAL SCROLL SETUP =====
 function setupHorizontalScroll(container) {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    let isDown = false, startX, scrollLeft;
 
     container.addEventListener('mousedown', (e) => {
-        isDown = true;
-        container.style.cursor = 'grabbing';
-        startX = e.pageX - container.offsetLeft;
-        scrollLeft = container.scrollLeft;
+        isDown = true; container.style.cursor = 'grabbing';
+        startX = e.pageX - container.offsetLeft; scrollLeft = container.scrollLeft;
         e.preventDefault();
     });
-
-    container.addEventListener('mouseleave', () => {
-        isDown = false;
-        container.style.cursor = 'grab';
-    });
-
-    container.addEventListener('mouseup', () => {
-        isDown = false;
-        container.style.cursor = 'grab';
-    });
-
+    container.addEventListener('mouseleave', () => { isDown = false; container.style.cursor = 'grab'; });
+    container.addEventListener('mouseup', () => { isDown = false; container.style.cursor = 'grab'; });
     container.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
+        if (!isDown) return; e.preventDefault();
         const x = e.pageX - container.offsetLeft;
-        const walk = (x - startX) * 2;
-        container.scrollLeft = scrollLeft - walk;
+        container.scrollLeft = scrollLeft - (x - startX) * 2;
     });
-
     container.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+        e.preventDefault(); e.stopPropagation();
         container.scrollLeft += e.deltaY;
     }, { passive: false });
 
-    let touchStartX = 0;
-    let touchScrollLeft = 0;
-
+    let touchStartX = 0, touchScrollLeft = 0;
     container.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].pageX - container.offsetLeft;
         touchScrollLeft = container.scrollLeft;
     }, { passive: true });
-
     container.addEventListener('touchmove', (e) => {
         const x = e.touches[0].pageX - container.offsetLeft;
-        const walk = (x - touchStartX) * 2;
-        container.scrollLeft = touchScrollLeft - walk;
+        container.scrollLeft = touchScrollLeft - (x - touchStartX) * 2;
     }, { passive: true });
-
-} // <-- END of setupHorizontalScroll
+}
 
 
 // ================================================================
-// ===== FYP SECTION - ALL CODE BELOW IS AT GLOBAL SCOPE =====
+// ===== FYP SECTION =====
 // ================================================================
 
 const FYP_STORAGE_KEY = 'fypData';
-const FYP_ADMIN_PASSWORD = 'fyp2026'; // Tukar password anda di sini
+const FYP_ADMIN_PASSWORD = 'fyp2026';
 
 function getFYPData() {
     try {
         const raw = localStorage.getItem(FYP_STORAGE_KEY);
         return raw ? JSON.parse(raw) : {
-            project: {
-                title: 'My Final Year Project',
-                description: 'Click to view my FYP journey and progress updates.',
-                year: '2025 - 2026',
-                thumbnail: ''
-            },
+            project: { title: 'My Final Year Project', description: 'Click to view my FYP journey and progress updates.', year: '2025 - 2026', thumbnail: '', progress: 0 },
             entries: []
         };
     } catch (e) {
-        return { project: { title: 'My Final Year Project', description: '', year: '2025 - 2026', thumbnail: '' }, entries: [] };
+        return { project: { title: 'My Final Year Project', description: '', year: '2025 - 2026', thumbnail: '', progress: 0 }, entries: [] };
     }
 }
 
 function saveFYPData(data) {
-    localStorage.setItem(FYP_STORAGE_KEY, JSON.stringify(data));
+    try {
+        // Clean up large base64 if localStorage is getting full
+        const serialized = JSON.stringify(data);
+        // Check approximate size (localStorage limit ~5MB)
+        if (serialized.length > 4 * 1024 * 1024) {
+            showAdminToast('⚠️ Data terlalu besar! Gunakan URL gambar (GitHub/Google Drive) untuk gambar detail.', true);
+            return false;
+        }
+        localStorage.setItem(FYP_STORAGE_KEY, serialized);
+        return true;
+    } catch (e) {
+        showAdminToast('❌ Gagal save! localStorage penuh. Gunakan URL gambar sahaja.', true);
+        return false;
+    }
 }
 
 function formatDateMY(dateStr) {
     if (!dateStr) return '';
-    const months = ['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogos','Sep','Okt','Nov','Dis'];
+    const months = ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ogos', 'Sep', 'Okt', 'Nov', 'Dis'];
     const d = new Date(dateStr + 'T00:00:00');
     return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
@@ -381,21 +450,29 @@ function renderFYPCard() {
     const descEl = document.getElementById('fypDescDisplay');
     const yearEl = document.getElementById('fypYearDisplay');
     const countEl = document.getElementById('fypEntryCount');
-    const thumbEl = document.getElementById('fypThumbnailDisplay');
+    const thumbImg = document.querySelector('.fyp-card-thumbnail');
     const placeholderEl = document.getElementById('fypThumbPlaceholder');
+    const progressBar = document.getElementById('fypProgressBar');
+    const progressLabel = document.getElementById('fypProgressLabel');
 
     if (titleEl) titleEl.textContent = p.title || 'My Final Year Project';
     if (descEl) descEl.textContent = p.description || 'Click to view my FYP journey.';
     if (yearEl) yearEl.innerHTML = `<i class="fas fa-clock"></i> ${p.year || '2025 - 2026'}`;
     if (countEl) countEl.innerHTML = `<i class="fas fa-calendar-check"></i> ${data.entries.length} entries`;
 
-    if (thumbEl && placeholderEl) {
-        if (p.thumbnail) {
-            thumbEl.src = p.thumbnail;
-            thumbEl.style.display = 'block';
+    // Progress bar
+    const prog = parseInt(p.progress) || 0;
+    if (progressBar) progressBar.style.width = prog + '%';
+    if (progressLabel) progressLabel.textContent = prog + '% Complete';
+
+    // Thumbnail
+    if (thumbImg && placeholderEl) {
+        if (p.thumbnail && p.thumbnail.trim()) {
+            thumbImg.src = p.thumbnail;
+            thumbImg.style.display = 'block';
             placeholderEl.style.display = 'none';
         } else {
-            thumbEl.style.display = 'none';
+            thumbImg.style.display = 'none';
             placeholderEl.style.display = 'flex';
         }
     }
@@ -409,18 +486,12 @@ function openFYPJourney() {
     if (subtitleEl) subtitleEl.textContent = data.project.description;
     renderTimeline(data.entries);
     const modal = document.getElementById('fypJourneyModal');
-    if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+    if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
 }
 
 function closeFYPJourney() {
     const modal = document.getElementById('fypJourneyModal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+    if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
 }
 
 function renderTimeline(entries) {
@@ -437,7 +508,6 @@ function renderTimeline(entries) {
     }
 
     const sorted = [...entries].sort((a, b) => new Date(a.date) - new Date(b.date));
-
     let html = '';
     sorted.forEach((entry, idx) => {
         const dateFormatted = formatDateMY(entry.date);
@@ -447,10 +517,10 @@ function renderTimeline(entries) {
         <div class="fyp-entry-node" onclick="openFYPDetail(${idx})" title="${entry.title}">
             <div class="fyp-entry-thumb-wrap">
                 ${hasThumb
-                    ? `<img src="${entry.thumbnail}" alt="${entry.title}" class="fyp-entry-thumb" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                ? `<img src="${entry.thumbnail}" alt="${entry.title}" class="fyp-entry-thumb" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                        <div class="fyp-entry-thumb-placeholder" style="display:none;"><i class="fas fa-image"></i></div>`
-                    : `<div class="fyp-entry-thumb-placeholder"><i class="fas fa-file-alt"></i></div>`
-                }
+                : `<div class="fyp-entry-thumb-placeholder"><i class="fas fa-file-alt"></i></div>`
+            }
             </div>
             <div class="fyp-entry-dot"></div>
             <div class="fyp-entry-date">${dateFormatted}</div>
@@ -472,15 +542,11 @@ function openFYPDetail(entryIndexInSorted) {
     const entry = sorted[entryIndexInSorted];
     if (!entry) return;
 
-    const badge = document.getElementById('fypDetailDateBadge');
-    const title = document.getElementById('fypDetailTitle');
-    const desc = document.getElementById('fypDetailDesc');
+    document.getElementById('fypDetailDateBadge').textContent = formatDateMY(entry.date);
+    document.getElementById('fypDetailTitle').textContent = entry.title;
+    document.getElementById('fypDetailDesc').textContent = entry.description || 'No description provided.';
+
     const imagesEl = document.getElementById('fypDetailImages');
-
-    if (badge) badge.textContent = formatDateMY(entry.date);
-    if (title) title.textContent = entry.title;
-    if (desc) desc.textContent = entry.description || 'No description provided.';
-
     if (imagesEl) {
         if (!entry.images || entry.images.length === 0) {
             imagesEl.innerHTML = `<p style="opacity:0.5; font-size:14px; grid-column:1/-1;">Tiada gambar untuk entry ini.</p>`;
@@ -489,9 +555,8 @@ function openFYPDetail(entryIndexInSorted) {
             entry.images.forEach((imgUrl, i) => {
                 const caption = (entry.captions && entry.captions[i]) ? entry.captions[i] : '';
                 imgHtml += `
-                <div class="fyp-detail-img-card" onclick="openFYPLightbox('${imgUrl}', '${caption.replace(/'/g, "\\'")}')">
-                    <img src="${imgUrl}" alt="${caption || 'Image ' + (i+1)}" loading="lazy"
-                         onerror="this.parentElement.style.display='none'">
+                <div class="fyp-detail-img-card" onclick="openFYPLightbox('${imgUrl.replace(/'/g, "\\'")}', '${caption.replace(/'/g, "\\'")}')">
+                    <img src="${imgUrl}" alt="${caption || 'Image ' + (i + 1)}" loading="lazy" onerror="this.parentElement.style.display='none'">
                     ${caption ? `<div class="fyp-detail-img-caption">${caption}</div>` : ''}
                 </div>`;
             });
@@ -500,9 +565,7 @@ function openFYPDetail(entryIndexInSorted) {
     }
 
     const modal = document.getElementById('fypDetailModal');
-    if (modal) {
-        modal.classList.add('active');
-    }
+    if (modal) modal.classList.add('active');
 }
 
 function closeFYPDetail() {
@@ -540,10 +603,7 @@ function openAdminPanel() {
 
 function closeFYPAdmin() {
     const modal = document.getElementById('fypAdminModal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+    if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
 }
 
 function verifyAdminPassword() {
@@ -552,16 +612,14 @@ function verifyAdminPassword() {
         document.getElementById('fypAdminLogin').style.display = 'none';
         document.getElementById('fypAdminDashboard').style.display = 'block';
         loadAdminDashboard();
+        initFYPDropZones();
     } else {
         const input = document.getElementById('fypAdminPassword');
         if (input) {
             input.style.borderColor = '#ef4444';
             input.placeholder = 'Wrong password! Try again.';
             input.value = '';
-            setTimeout(() => {
-                input.style.borderColor = '';
-                input.placeholder = 'Enter admin password';
-            }, 2000);
+            setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'Enter admin password'; }, 2000);
         }
     }
 }
@@ -576,20 +634,15 @@ function loadAdminDashboard() {
     const data = getFYPData();
     const p = data.project;
 
-    const titleInput = document.getElementById('adminProjectTitle');
-    const yearInput = document.getElementById('adminProjectYear');
-    const descInput = document.getElementById('adminProjectDesc');
-    const thumbInput = document.getElementById('adminProjectThumb');
-
-    if (titleInput) titleInput.value = p.title || '';
-    if (yearInput) yearInput.value = p.year || '';
-    if (descInput) descInput.value = p.description || '';
-    if (thumbInput) thumbInput.value = p.thumbnail || '';
+    document.getElementById('adminProjectTitle').value = p.title || '';
+    document.getElementById('adminProjectYear').value = p.year || '';
+    document.getElementById('adminProjectDesc').value = p.description || '';
+    document.getElementById('adminProjectThumb').value = p.thumbnail || '';
+    document.getElementById('adminProjectProgress').value = p.progress || 0;
+    document.getElementById('progressValueDisplay').textContent = (p.progress || 0) + '%';
 
     const dateInput = document.getElementById('adminEntryDate');
-    if (dateInput && !dateInput.value) {
-        dateInput.value = new Date().toISOString().split('T')[0];
-    }
+    if (dateInput && !dateInput.value) dateInput.value = new Date().toISOString().split('T')[0];
 
     renderAdminEntriesList(data.entries);
 }
@@ -600,9 +653,12 @@ function saveProjectSettings() {
     data.project.year = document.getElementById('adminProjectYear')?.value.trim() || data.project.year;
     data.project.description = document.getElementById('adminProjectDesc')?.value.trim() || data.project.description;
     data.project.thumbnail = document.getElementById('adminProjectThumb')?.value.trim() || '';
-    saveFYPData(data);
-    renderFYPCard();
-    showAdminToast('✅ Project settings saved!');
+    data.project.progress = parseInt(document.getElementById('adminProjectProgress')?.value) || 0;
+
+    if (saveFYPData(data)) {
+        renderFYPCard();
+        showAdminToast('✅ Project settings saved!');
+    }
 }
 
 function addJourneyEntry() {
@@ -610,40 +666,52 @@ function addJourneyEntry() {
     const title = document.getElementById('adminEntryTitle')?.value.trim();
     const desc = document.getElementById('adminEntryDesc')?.value.trim();
     const thumb = document.getElementById('adminEntryThumb')?.value.trim();
-    const imagesRaw = document.getElementById('adminEntryImages')?.value.trim();
     const captionsRaw = document.getElementById('adminEntryCaptions')?.value.trim();
 
-    if (!date || !title) {
-        showAdminToast('⚠️ Date and Title are required!', true);
-        return;
-    }
+    if (!date || !title) { showAdminToast('⚠️ Date and Title are required!', true); return; }
 
-    const images = imagesRaw ? imagesRaw.split('\n').map(s => s.trim()).filter(s => s) : [];
+    // Get images from URL input (primary) OR base64 (backup, compressed)
+    const images = getEntryImages();
     const captions = captionsRaw ? captionsRaw.split('\n').map(s => s.trim()) : [];
 
     const data = getFYPData();
     data.entries.push({ date, title, description: desc, thumbnail: thumb, images, captions });
-    saveFYPData(data);
 
-    document.getElementById('adminEntryTitle').value = '';
-    document.getElementById('adminEntryDesc').value = '';
-    document.getElementById('adminEntryThumb').value = '';
-    document.getElementById('adminEntryImages').value = '';
-    document.getElementById('adminEntryCaptions').value = '';
+    if (saveFYPData(data)) {
+        // Clear form
+        document.getElementById('adminEntryTitle').value = '';
+        document.getElementById('adminEntryDesc').value = '';
+        document.getElementById('adminEntryThumb').value = '';
+        document.getElementById('adminEntryImagesUrl').value = '';
+        document.getElementById('adminEntryCaptions').value = '';
+        resetDropZones();
 
-    renderAdminEntriesList(data.entries);
-    renderFYPCard();
-    showAdminToast('✅ Entry added successfully!');
+        renderAdminEntriesList(data.entries);
+        renderFYPCard();
+        showAdminToast('✅ Entry added successfully!');
+    }
+}
+
+// Get images — URL first, then base64 fallback
+function getEntryImages() {
+    // Primary: URL input
+    const urlInput = document.getElementById('adminEntryImagesUrl')?.value.trim();
+    if (urlInput) {
+        return urlInput.split('\n').map(s => s.trim()).filter(s => s);
+    }
+    // Backup: compressed base64
+    return detailImagesBase64;
 }
 
 function deleteJourneyEntry(originalIndex) {
     if (!confirm('Delete this entry?')) return;
     const data = getFYPData();
     data.entries.splice(originalIndex, 1);
-    saveFYPData(data);
-    renderAdminEntriesList(data.entries);
-    renderFYPCard();
-    showAdminToast('🗑️ Entry deleted.');
+    if (saveFYPData(data)) {
+        renderAdminEntriesList(data.entries);
+        renderFYPCard();
+        showAdminToast('🗑️ Entry deleted.');
+    }
 }
 
 function renderAdminEntriesList(entries) {
@@ -682,25 +750,21 @@ function loadEntryForEdit(origIdx) {
     const entry = data.entries[origIdx];
     if (!entry) return;
 
-    // Isi semula form "Add New Journey Entry" dengan data entry yang dipilih
     document.getElementById('adminEntryDate').value = entry.date || '';
     document.getElementById('adminEntryTitle').value = entry.title || '';
     document.getElementById('adminEntryDesc').value = entry.description || '';
     document.getElementById('adminEntryThumb').value = entry.thumbnail || '';
-    document.getElementById('adminEntryImages').value = (entry.images || []).join('\n');
+    document.getElementById('adminEntryImagesUrl').value = (entry.images || []).filter(img => !img.startsWith('data:')).join('\n');
     document.getElementById('adminEntryCaptions').value = (entry.captions || []).join('\n');
 
-    // Tukar butang "Add Entry" kepada "Save Edit"
     const addBtn = document.querySelector('.fyp-admin-block .fyp-admin-save-btn[onclick="addJourneyEntry()"]');
     if (addBtn) {
         addBtn.innerHTML = '<i class="fas fa-save"></i> Save Edit';
         addBtn.setAttribute('onclick', `saveEditedEntry(${origIdx})`);
     }
 
-    // Scroll ke atas supaya user nampak form
     const modal = document.querySelector('.fyp-admin-content');
     if (modal) modal.scrollTop = 0;
-
     showAdminToast('✏️ Entry loaded. Edit and click Save Edit.');
 }
 
@@ -709,39 +773,35 @@ function saveEditedEntry(origIdx) {
     const title = document.getElementById('adminEntryTitle')?.value.trim();
     const desc = document.getElementById('adminEntryDesc')?.value.trim();
     const thumb = document.getElementById('adminEntryThumb')?.value.trim();
-    const imagesRaw = document.getElementById('adminEntryImages')?.value.trim();
     const captionsRaw = document.getElementById('adminEntryCaptions')?.value.trim();
 
-    if (!date || !title) {
-        showAdminToast('⚠️ Date and Title are required!', true);
-        return;
-    }
+    if (!date || !title) { showAdminToast('⚠️ Date and Title are required!', true); return; }
 
-    const images = imagesRaw ? imagesRaw.split('\n').map(s => s.trim()).filter(s => s) : [];
+    const images = getEntryImages();
     const captions = captionsRaw ? captionsRaw.split('\n').map(s => s.trim()) : [];
 
     const data = getFYPData();
     data.entries[origIdx] = { date, title, description: desc, thumbnail: thumb, images, captions };
-    saveFYPData(data);
 
-    // Clear form
-    document.getElementById('adminEntryDate').value = new Date().toISOString().split('T')[0];
-    document.getElementById('adminEntryTitle').value = '';
-    document.getElementById('adminEntryDesc').value = '';
-    document.getElementById('adminEntryThumb').value = '';
-    document.getElementById('adminEntryImages').value = '';
-    document.getElementById('adminEntryCaptions').value = '';
+    if (saveFYPData(data)) {
+        document.getElementById('adminEntryDate').value = new Date().toISOString().split('T')[0];
+        document.getElementById('adminEntryTitle').value = '';
+        document.getElementById('adminEntryDesc').value = '';
+        document.getElementById('adminEntryThumb').value = '';
+        document.getElementById('adminEntryImagesUrl').value = '';
+        document.getElementById('adminEntryCaptions').value = '';
+        resetDropZones();
 
-    // Reset butang balik ke "Add Entry"
-    const saveBtn = document.querySelector('.fyp-admin-block .fyp-admin-save-btn[onclick*="saveEditedEntry"]');
-    if (saveBtn) {
-        saveBtn.innerHTML = '<i class="fas fa-plus"></i> Add Entry';
-        saveBtn.setAttribute('onclick', 'addJourneyEntry()');
+        const saveBtn = document.querySelector('.fyp-admin-block .fyp-admin-save-btn[onclick*="saveEditedEntry"]');
+        if (saveBtn) {
+            saveBtn.innerHTML = '<i class="fas fa-plus"></i> Add Entry';
+            saveBtn.setAttribute('onclick', 'addJourneyEntry()');
+        }
+
+        renderAdminEntriesList(data.entries);
+        renderFYPCard();
+        showAdminToast('✅ Entry updated successfully!');
     }
-
-    renderAdminEntriesList(data.entries);
-    renderFYPCard();
-    showAdminToast('✅ Entry updated successfully!');
 }
 
 function showAdminToast(message, isError = false) {
@@ -752,57 +812,41 @@ function showAdminToast(message, isError = false) {
     toast.id = 'fypAdminToast';
     toast.textContent = message;
     toast.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 14px 28px;
-        border-radius: 30px;
-        font-size: 14px;
-        font-weight: 700;
-        font-family: 'Outfit', sans-serif;
-        z-index: 999999;
+        position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+        padding: 14px 28px; border-radius: 30px; font-size: 14px; font-weight: 700;
+        font-family: 'Outfit', sans-serif; z-index: 999999;
         animation: fadeInUp 0.3s ease;
         background: ${isError ? '#ef4444' : '#22c55e'};
-        color: #ffffff;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        pointer-events: none;
+        color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.3); pointer-events: none;
     `;
     document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 2500);
+    setTimeout(() => toast.remove(), 3000);
 }
 
-// ===== FYP DRAG & DROP =====
-let detailImagesBase64 = []; // array of base64 strings
+
+// ===== FYP DRAG & DROP + IMAGE HANDLING =====
+let detailImagesBase64 = [];
 
 function initFYPDropZones() {
-    // Thumbnail drop zone
     const thumbZone = document.getElementById('thumbDropZone');
-    if (thumbZone) {
-        thumbZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            thumbZone.classList.add('dragover');
-        });
+    if (thumbZone && !thumbZone._initialized) {
+        thumbZone._initialized = true;
+        thumbZone.addEventListener('dragover', (e) => { e.preventDefault(); thumbZone.classList.add('dragover'); });
         thumbZone.addEventListener('dragleave', () => thumbZone.classList.remove('dragover'));
         thumbZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            thumbZone.classList.remove('dragover');
+            e.preventDefault(); thumbZone.classList.remove('dragover');
             const file = e.dataTransfer.files[0];
             if (file && file.type.startsWith('image/')) processThumbFile(file);
         });
     }
 
-    // Detail images drop zone
     const detailZone = document.getElementById('detailDropZone');
-    if (detailZone) {
-        detailZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            detailZone.classList.add('dragover');
-        });
+    if (detailZone && !detailZone._initialized) {
+        detailZone._initialized = true;
+        detailZone.addEventListener('dragover', (e) => { e.preventDefault(); detailZone.classList.add('dragover'); });
         detailZone.addEventListener('dragleave', () => detailZone.classList.remove('dragover'));
         detailZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            detailZone.classList.remove('dragover');
+            e.preventDefault(); detailZone.classList.remove('dragover');
             const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
             files.forEach(processDetailFile);
         });
@@ -815,9 +859,7 @@ function handleThumbFile(input) {
 }
 
 function processThumbFile(file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        const base64 = e.target.result;
+    compressImage(file, 800, 0.8, (base64) => {
         document.getElementById('adminEntryThumb').value = base64;
         const preview = document.getElementById('thumbPreview');
         const clearBtn = document.getElementById('thumbClearBtn');
@@ -829,8 +871,7 @@ function processThumbFile(file) {
         if (dropIcon) dropIcon.style.display = 'none';
         if (dropText) dropText.style.display = 'none';
         if (dropHint) dropHint.style.display = 'none';
-    };
-    reader.readAsDataURL(file);
+    });
 }
 
 function clearThumb(e) {
@@ -839,14 +880,12 @@ function clearThumb(e) {
     document.getElementById('thumbFileInput').value = '';
     const preview = document.getElementById('thumbPreview');
     const clearBtn = document.getElementById('thumbClearBtn');
-    const dropIcon = document.querySelector('#thumbDropZone .fyp-drop-icon');
-    const dropText = document.querySelector('#thumbDropZone .fyp-drop-text');
-    const dropHint = document.querySelector('#thumbDropZone .fyp-drop-hint');
+    ['#thumbDropZone .fyp-drop-icon', '#thumbDropZone .fyp-drop-text', '#thumbDropZone .fyp-drop-hint'].forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) el.style.display = '';
+    });
     if (preview) { preview.src = ''; preview.style.display = 'none'; }
     if (clearBtn) clearBtn.style.display = 'none';
-    if (dropIcon) dropIcon.style.display = 'block';
-    if (dropText) dropText.style.display = 'block';
-    if (dropHint) dropHint.style.display = 'block';
 }
 
 function handleDetailFiles(input) {
@@ -855,13 +894,32 @@ function handleDetailFiles(input) {
 }
 
 function processDetailFile(file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        const base64 = e.target.result;
+    // Compress heavily for backup storage
+    compressImage(file, 600, 0.65, (base64) => {
         detailImagesBase64.push(base64);
         renderDetailPreviews();
-        // Update hidden input
-        document.getElementById('adminEntryImages').value = detailImagesBase64.join('\n');
+    });
+}
+
+// ===== IMAGE COMPRESSION =====
+function compressImage(file, maxWidth, quality, callback) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let width = img.width, height = img.height;
+            if (width > maxWidth) {
+                height = Math.round(height * maxWidth / width);
+                width = maxWidth;
+            }
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            callback(canvas.toDataURL('image/jpeg', quality));
+        };
+        img.src = e.target.result;
     };
     reader.readAsDataURL(file);
 }
@@ -871,7 +929,7 @@ function renderDetailPreviews() {
     if (!grid) return;
     grid.innerHTML = detailImagesBase64.map((src, i) => `
         <div class="fyp-detail-preview-item">
-            <img src="${src}" alt="Image ${i+1}">
+            <img src="${src}" alt="Image ${i + 1}">
             <button class="fyp-detail-preview-remove" onclick="removeDetailImage(${i})">
                 <i class="fas fa-times"></i>
             </button>
@@ -882,16 +940,12 @@ function renderDetailPreviews() {
 function removeDetailImage(idx) {
     detailImagesBase64.splice(idx, 1);
     renderDetailPreviews();
-    document.getElementById('adminEntryImages').value = detailImagesBase64.join('\n');
 }
 
 function resetDropZones() {
-    // Reset thumbnail
     clearThumb({ stopPropagation: () => {} });
-    // Reset detail images
     detailImagesBase64 = [];
     renderDetailPreviews();
-    document.getElementById('adminEntryImages').value = '';
     const detailInput = document.getElementById('detailFileInput');
     if (detailInput) detailInput.value = '';
 }
