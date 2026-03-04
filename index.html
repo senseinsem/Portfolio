@@ -9,10 +9,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
-    
+
+    <!-- ===== LOADING SCREEN ===== -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">AA</div>
+            <div class="loading-bar-wrap">
+                <div class="loading-bar"></div>
+            </div>
+            <p class="loading-text">Loading Portfolio...</p>
+        </div>
+    </div>
+
     <!-- Theme Toggle Button -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
         <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
     </button>
 
     <div class="container">
@@ -28,39 +44,28 @@
 
             <div class="contact-info">
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <div class="contact-details">
                         <span class="contact-label">Email</span>
                         <span class="contact-value">selviansamsul@gmail.com</span>
                     </div>
                 </div>
-
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
                     <div class="contact-details">
                         <span class="contact-label">Phone</span>
                         <span class="contact-value">+60 11-6481 2238</span>
                     </div>
                 </div>
-
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-calendar"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-calendar"></i></div>
                     <div class="contact-details">
                         <span class="contact-label">Birthday</span>
                         <span class="contact-value">June 15, 2003</span>
                     </div>
                 </div>
-
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-location-dot"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
                     <div class="contact-details">
                         <span class="contact-label">Location</span>
                         <span class="contact-value">Sabah, Malaysia</span>
@@ -69,18 +74,10 @@
             </div>
 
             <div class="social-links">
-                <a href="https://www.instagram.com/senseinsem" target="_blank" class="social-link" title="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com/@senseinsem" target="_blank" class="social-link" title="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://discord.gg/hzGdXXtx" target="_blank" class="social-link" title="Discord">
-                    <i class="fab fa-discord"></i>
-                </a>
-                <a href="#" class="social-link" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
+                <a href="https://www.instagram.com/senseinsem" target="_blank" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@senseinsem" target="_blank" class="social-link" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.gg/hzGdXXtx" target="_blank" class="social-link" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </aside>
 
@@ -99,113 +96,66 @@
 
             <!-- Content Area -->
             <div class="content-area">
-                
+
                 <!-- ===== ABOUT ME TAB ===== -->
                 <div class="tab-content active" id="about">
                     <h2 class="section-title">About Me</h2>
                     <p class="about-text">
-                        Hello! I enjoy coding and am constantly learning to improve my skills. 
-                        I love creating animations and editing videos, and I sometimes play games and 
-                        stream on social media. My ultimate goal is to keep pushing myself and reach 
+                        Hello! I enjoy coding and am constantly learning to improve my skills.
+                        I love creating animations and editing videos, and I sometimes play games and
+                        stream on social media. My ultimate goal is to keep pushing myself and reach
                         milestones I have yet to achieve.
                     </p>
 
-                    <!-- Skills & Hobbies Section -->
                     <h3 class="subsection-title">Skills & Hobbies</h3>
                     <div class="services-grid">
                         <div class="service-card" onclick="openPopup('htmlPopup')">
-                            <div class="service-icon">
-                                <img src="coding.png" alt="Coding" style="width: 50px; height: 50px; object-fit: contain;">
-                            </div>
+                            <div class="service-icon"><img src="coding.png" alt="Coding" style="width: 50px; height: 50px; object-fit: contain;"></div>
                             <h4 class="service-title">Coding</h4>
                             <p class="service-description">HTML, CSS, JavaScript and more programming languages.</p>
                         </div>
-                        
                         <div class="service-card" onclick="openPopup('designPopup')">
-                            <div class="service-icon">
-                                <img src="gdesign.png" alt="Graphic Design" style="width: 50px; height: 50px; object-fit: contain;">
-                            </div>
+                            <div class="service-icon"><img src="gdesign.png" alt="Graphic Design" style="width: 50px; height: 50px; object-fit: contain;"></div>
                             <h4 class="service-title">Graphic Design</h4>
                             <p class="service-description">Creating visual content with Photoshop and Illustrator.</p>
                         </div>
-                        
                         <div class="service-card" onclick="openPopup('gamingPopup')">
-                            <div class="service-icon">
-                                <img src="pgame.png" alt="Gaming" style="width: 50px; height: 50px; object-fit: contain;">
-                            </div>
+                            <div class="service-icon"><img src="pgame.png" alt="Gaming" style="width: 50px; height: 50px; object-fit: contain;"></div>
                             <h4 class="service-title">Playing Games</h4>
                             <p class="service-description">Minecraft, Battlefield, Mobile Legends and more.</p>
                         </div>
-                        
                         <div class="service-card" onclick="openPopup('streamPopup')">
-                            <div class="service-icon">
-                                <img src="streaming.png" alt="Streaming" style="width: 50px; height: 50px; object-fit: contain;">
-                            </div>
+                            <div class="service-icon"><img src="streaming.png" alt="Streaming" style="width: 50px; height: 50px; object-fit: contain;"></div>
                             <h4 class="service-title">Streaming</h4>
                             <p class="service-description">Live streaming on YouTube, Facebook, and TikTok.</p>
                         </div>
-                        
                         <div class="service-card" onclick="openPopup('animationPopup')">
-                            <div class="service-icon">
-                                <img src="animator.png" alt="Animation" style="width: 50px; height: 50px; object-fit: contain;">
-                            </div>
+                            <div class="service-icon"><img src="animator.png" alt="Animation" style="width: 50px; height: 50px; object-fit: contain;"></div>
                             <h4 class="service-title">Animation</h4>
                             <p class="service-description">3D animation and motion graphics with Blender.</p>
                         </div>
-                        
                         <div class="service-card" onclick="openPopup('animePopup')">
-                            <div class="service-icon">
-                                <img src="anime.png" alt="Anime" style="width: 50px; height: 50px; object-fit: contain;">
-                            </div>
+                            <div class="service-icon"><img src="anime.png" alt="Anime" style="width: 50px; height: 50px; object-fit: contain;"></div>
                             <h4 class="service-title">Anime</h4>
                             <p class="service-description">Watching anime series like One Piece, AOT, and more.</p>
                         </div>
                     </div>
 
-                    <!-- Tools & Software Section -->
                     <h3 class="subsection-title">Tools & Software</h3>
                     <div class="tools-container">
                         <div class="tools-scroll">
-                            <div class="tool-item">
-                                <i class="fab fa-adobe" style="color: #FF0000;"></i>
-                                <span>Adobe Photoshop</span>
-                            </div>
-                            <div class="tool-item">
-                                <i class="fab fa-adobe" style="color: #FF7C00;"></i>
-                                <span>Adobe Illustrator</span>
-                            </div>
-                            <div class="tool-item">
-                                <i class="fas fa-cube" style="color: #F5792A;"></i>
-                                <span>Blender</span>
-                            </div>
-                            <div class="tool-item">
-                                <i class="fab fa-adobe" style="color: #9999FF;"></i>
-                                <span>Premiere Pro</span>
-                            </div>
-                            <div class="tool-item">
-                                <i class="fas fa-code" style="color: #007ACC;"></i>
-                                <span>VS Code</span>
-                            </div>
-                            <div class="tool-item">
-                                <i class="fas fa-video" style="color: #302E31;"></i>
-                                <span>OBS Studio</span>
-                            </div>
-                            <div class="tool-item">
-                                <i class="fab fa-unity" style="color: #000000;"></i>
-                                <span>Unity</span>
-                            </div>
-                            <div class="tool-item">
-                                <i class="fas fa-gamepad" style="color: #0E1128;"></i>
-                                <span>Unreal Engine</span>
-                            </div>
-                            <div class="tool-item">
-                                <i class="fas fa-paint-brush" style="color: #FF69B4;"></i>
-                                <span>iBisPaint</span>
-                            </div>
+                            <div class="tool-item"><i class="fab fa-adobe" style="color: #FF0000;"></i><span>Adobe Photoshop</span></div>
+                            <div class="tool-item"><i class="fab fa-adobe" style="color: #FF7C00;"></i><span>Adobe Illustrator</span></div>
+                            <div class="tool-item"><i class="fas fa-cube" style="color: #F5792A;"></i><span>Blender</span></div>
+                            <div class="tool-item"><i class="fab fa-adobe" style="color: #9999FF;"></i><span>Premiere Pro</span></div>
+                            <div class="tool-item"><i class="fas fa-code" style="color: #007ACC;"></i><span>VS Code</span></div>
+                            <div class="tool-item"><i class="fas fa-video" style="color: #302E31;"></i><span>OBS Studio</span></div>
+                            <div class="tool-item"><i class="fab fa-unity" style="color: #000000;"></i><span>Unity</span></div>
+                            <div class="tool-item"><i class="fas fa-gamepad" style="color: #0E1128;"></i><span>Unreal Engine</span></div>
+                            <div class="tool-item"><i class="fas fa-paint-brush" style="color: #FF69B4;"></i><span>iBisPaint</span></div>
                         </div>
                     </div>
 
-                    <!-- Testimonials Section -->
                     <h3 class="subsection-title">Testimonials</h3>
                     <div class="testimonials-container">
                         <div class="testimonials-scroll">
@@ -213,97 +163,52 @@
                                 <p class="testimonial-text">"Alex is an incredibly talented student. His dedication to learning and mastering new technologies is impressive. He's always willing to help classmates and share his knowledge."</p>
                                 <div class="testimonial-author">
                                     <img src="https://ui-avatars.com/api/?name=Ahmad+Hassan&background=4a9eff&color=fff&size=100" alt="Ahmad Hassan" class="author-avatar">
-                                    <div class="author-info">
-                                        <h4>Ahmad Hassan</h4>
-                                        <p>Classmate, UTeM</p>
-                                    </div>
+                                    <div class="author-info"><h4>Ahmad Hassan</h4><p>Classmate, UTeM</p></div>
                                 </div>
                             </div>
                             <div class="testimonial-card">
                                 <p class="testimonial-text">"Working with Alex on our web development project was amazing. He has great skills in both design and coding, and his creativity really brought our project to life!"</p>
                                 <div class="testimonial-author">
                                     <img src="https://ui-avatars.com/api/?name=Sarah+Tan&background=4a9eff&color=fff&size=100" alt="Sarah Tan" class="author-avatar">
-                                    <div class="author-info">
-                                        <h4>Nazeem</h4>
-                                        <p>Project Partner, UTeM</p>
-                                    </div>
+                                    <div class="author-info"><h4>Nazeem</h4><p>Project Partner, UTeM</p></div>
                                 </div>
                             </div>
                             <div class="testimonial-card">
                                 <p class="testimonial-text">"Alex's 3D animation and Blender skills are outstanding. His attention to detail and creative approach make his work stand out. Definitely someone to watch in the animation field!"</p>
                                 <div class="testimonial-author">
                                     <img src="https://ui-avatars.com/api/?name=Daniel+Lee&background=4a9eff&color=fff&size=100" alt="Daniel Lee" class="author-avatar">
-                                    <div class="author-info">
-                                        <h4>Fatihah</h4>
-                                        <p>Friend & Designer</p>
-                                    </div>
+                                    <div class="author-info"><h4>Fatihah</h4><p>Friend & Designer</p></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Technical Proficiency Section -->
                     <div class="skills-section">
                         <h3 class="subsection-title">Technical Proficiency</h3>
                         <div class="skills-grid">
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">HTML5</span>
-                                    <span class="skill-percentage">60%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 60%"></div>
-                                </div>
+                                <div class="skill-header"><span class="skill-name">HTML5</span><span class="skill-percentage">60%</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 60%"></div></div>
                             </div>
-                            
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">CSS3</span>
-                                    <span class="skill-percentage">60%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 60%"></div>
-                                </div>
+                                <div class="skill-header"><span class="skill-name">CSS3</span><span class="skill-percentage">60%</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 60%"></div></div>
                             </div>
-                            
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">JavaScript</span>
-                                    <span class="skill-percentage">60%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 60%"></div>
-                                </div>
+                                <div class="skill-header"><span class="skill-name">JavaScript</span><span class="skill-percentage">60%</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 60%"></div></div>
                             </div>
-                            
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">Graphic Design</span>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
-                                </div>
+                                <div class="skill-header"><span class="skill-name">Graphic Design</span><span class="skill-percentage">80%</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
                             </div>
-                            
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">Blender / 3D Animation</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
-                                </div>
+                                <div class="skill-header"><span class="skill-name">Blender / 3D Animation</span><span class="skill-percentage">85%</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
                             </div>
-                            
                             <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">Video Editing</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
-                                </div>
+                                <div class="skill-header"><span class="skill-name">Video Editing</span><span class="skill-percentage">85%</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
                             </div>
                         </div>
                     </div>
@@ -312,8 +217,6 @@
                 <!-- ===== RESUME TAB ===== -->
                 <div class="tab-content" id="resume">
                     <h2 class="section-title">Resume</h2>
-                    
-                    <!-- Education Section -->
                     <div class="timeline-section">
                         <h3 class="timeline-header">Education</h3>
                         <div class="timeline-item">
@@ -322,7 +225,6 @@
                             <p class="timeline-subtitle">SMK Bukit Garam, Sabah</p>
                             <p class="timeline-description">Completed diploma program with focus on business management and entrepreneurship.</p>
                         </div>
-                        
                         <div class="timeline-item">
                             <span class="timeline-year">2023 - 2027</span>
                             <h4 class="timeline-title">Bachelor of Computer Science</h4>
@@ -330,8 +232,6 @@
                             <p class="timeline-description">Currently pursuing degree in Computer Science with specialization in software development and web technologies.</p>
                         </div>
                     </div>
-
-                    <!-- Experience Section -->
                     <div class="timeline-section">
                         <h3 class="timeline-header">Experience</h3>
                         <div class="timeline-item">
@@ -346,41 +246,39 @@
                 <!-- ===== PORTFOLIO TAB ===== -->
                 <div class="tab-content" id="portfolio">
                     <h2 class="section-title">Portfolio</h2>
-                    
+
+                    <!-- Filter Buttons -->
+                    <div id="portfolioFilters" class="portfolio-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="web">Web</button>
+                        <button class="filter-btn" data-filter="animation">Animation</button>
+                        <button class="filter-btn" data-filter="design">Design</button>
+                        <button class="filter-btn" data-filter="database">Database</button>
+                    </div>
+
                     <div class="portfolio-grid">
-                        <!-- Project 1 -->
-                        <div class="portfolio-item" onclick="openPopup('project1Popup')">
+                        <div class="portfolio-item" data-category="web" onclick="openPopup('project1Popup')">
                             <img src="projects/p1.png" alt="Web Development Project">
                             <div class="portfolio-overlay">
                                 <h4>Web Development Project</h4>
                                 <p>HTML • CSS • JavaScript • C++</p>
-                                <div class="portfolio-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </div>
+                                <div class="portfolio-link"><i class="fas fa-external-link-alt"></i></div>
                             </div>
                         </div>
-                        
-                        <!-- Project 2 -->
-                        <div class="portfolio-item" onclick="openPopup('project2Popup')">
+                        <div class="portfolio-item" data-category="database" onclick="openPopup('project2Popup')">
                             <img src="projects/p2.png" alt="Database Management System">
                             <div class="portfolio-overlay">
                                 <h4>Database Management System</h4>
                                 <p>SQL • Database Design</p>
-                                <div class="portfolio-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </div>
+                                <div class="portfolio-link"><i class="fas fa-external-link-alt"></i></div>
                             </div>
                         </div>
-                        
-                        <!-- Project 3 -->
-                        <div class="portfolio-item" onclick="openPopup('project3Popup')">
+                        <div class="portfolio-item" data-category="animation" onclick="openPopup('project3Popup')">
                             <img src="projects/p3.png" alt="Animation Project">
                             <div class="portfolio-overlay">
                                 <h4>Animation Project</h4>
                                 <p>Blender • Video Editing</p>
-                                <div class="portfolio-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </div>
+                                <div class="portfolio-link"><i class="fas fa-external-link-alt"></i></div>
                             </div>
                         </div>
                     </div>
@@ -390,76 +288,76 @@
                 <div class="tab-content" id="workshop">
                     <h2 class="section-title">Workshop</h2>
                     <p class="about-text">Hands-on learning experience in multimedia production and 3D animation development.</p>
-                    
                     <div class="workshop-grid">
                         <div class="workshop-card-new" onclick="openWorkshopModal()">
                             <div class="workshop-date-new">2024/2025</div>
                             <h4 class="workshop-title-new">Workshop II | BITU 3923 SEM 1 2025/2026</h4>
-                            <p class="workshop-description-new">
-                                Produce and integrate multimedia elements into standalone projects using professional tools. Covering 3D animation, video editing, and creative product development with commercial features.
-                            </p>
+                            <p class="workshop-description-new">Produce and integrate multimedia elements into standalone projects using professional tools. Covering 3D animation, video editing, and creative product development with commercial features.</p>
                             <div class="workshop-details-new">
                                 <span><i class="fas fa-clock"></i> Full Semester</span>
                                 <span><i class="fas fa-users"></i> UTeM Students</span>
                             </div>
-                            <button class="workshop-btn-new">
-                                <span>VIEW GALLERY</span>
-                            </button>
+                            <button class="workshop-btn-new"><span>VIEW GALLERY</span></button>
                         </div>
                     </div>
                 </div>
 
                 <!-- ===== FYP TAB ===== -->
-            <div class="tab-content" id="fyp">
-                <div class="fyp-header-row">
-            <div>
-                <h2 class="section-title">Final Year Project</h2>
-                <p class="about-text">My FYP journey — documenting progress, milestones, and the process of building my final year project from start to finish.</p>
-            </div>
-            <button class="fyp-admin-btn" onclick="openAdminPanel()">
-            <i class="fas fa-lock"></i>
-            <span>Admin</span>
-        </button>
-    </div>
+                <div class="tab-content" id="fyp">
+                    <div class="fyp-header-row">
+                        <div>
+                            <h2 class="section-title">Final Year Project</h2>
+                            <p class="about-text">My FYP journey — documenting progress, milestones, and the process of building my final year project from start to finish.</p>
+                        </div>
+                        <button class="fyp-admin-btn" onclick="openAdminPanel()">
+                            <i class="fas fa-lock"></i>
+                            <span>Admin</span>
+                        </button>
+                    </div>
 
+                    <!-- FYP Project Card -->
+                    <div id="fypProjectCard" class="fyp-project-card" onclick="openFYPJourney()">
+                        <div class="fyp-card-thumbnail-wrap">
+                            <img src="fyp/LEFTENANADNAN.png" alt="FYP Thumbnail" class="fyp-card-thumbnail">
+                            <div class="fyp-card-thumbnail-placeholder" id="fypThumbPlaceholder">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div class="fyp-card-body">
+                            <div class="fyp-card-badge">Final Year Project</div>
+                            <h3 class="fyp-card-title" id="fypTitleDisplay">My Final Year Project</h3>
+                            <p class="fyp-card-desc" id="fypDescDisplay">Click to view my FYP journey and progress updates.</p>
 
-       <!-- FYP Project Card -->
-    <div id="fypProjectCard" class="fyp-project-card" onclick="openFYPJourney()">
-        <div class="fyp-card-thumbnail-wrap">
-<img src="fyp/LEFTENANADNAN.png" alt="FYP Thumbnail" class="fyp-card-thumbnail">
-            <div class="fyp-card-thumbnail-placeholder" id="fypThumbPlaceholder">
-                <i class="fas fa-graduation-cap"></i>
-            </div>
-        </div>
-        <div class="fyp-card-body">
-            <div class="fyp-card-badge">Final Year Project</div>
-            <h3 class="fyp-card-title" id="fypTitleDisplay">My Final Year Project</h3>
-            <p class="fyp-card-desc" id="fypDescDisplay">Click to view my FYP journey and progress updates.</p>
-            <div class="fyp-card-meta">
-                <span id="fypEntryCount"><i class="fas fa-calendar-check"></i> 0 entries</span>
-                <span id="fypYearDisplay"><i class="fas fa-clock"></i> 2025 - 2026</span>
-            </div>
-            <div class="fyp-card-cta">
-                <span>View Journey</span>
-                <i class="fas fa-arrow-right"></i>
-            </div>
-        </div>
-    </div>
+                            <!-- Progress Bar -->
+                            <div class="fyp-progress-wrap">
+                                <div class="fyp-progress-track">
+                                    <div class="fyp-progress-fill" id="fypProgressBar" style="width: 0%"></div>
+                                </div>
+                                <span class="fyp-progress-label" id="fypProgressLabel">0% Complete</span>
+                            </div>
 
-    <!-- No entries placeholder -->
-    <div id="fypEmptyState" class="fyp-empty-state" style="display:none;">
-        <i class="fas fa-folder-open"></i>
-        <p>No journey entries yet. Use Admin panel to add your first entry!</p>
-    </div>
-</div>
+                            <div class="fyp-card-meta">
+                                <span id="fypEntryCount"><i class="fas fa-calendar-check"></i> 0 entries</span>
+                                <span id="fypYearDisplay"><i class="fas fa-clock"></i> 2025 - 2026</span>
+                            </div>
+                            <div class="fyp-card-cta">
+                                <span>View Journey</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="fypEmptyState" class="fyp-empty-state" style="display:none;">
+                        <i class="fas fa-folder-open"></i>
+                        <p>No journey entries yet. Use Admin panel to add your first entry!</p>
+                    </div>
+                </div>
+
                 <!-- ===== GALLERY TAB ===== -->
                 <div class="tab-content" id="gallery">
                     <h2 class="section-title">Gallery</h2>
                     <p class="about-text">Memories and moments captured throughout my educational journey.</p>
-                    
-                    <!-- Schools Gallery Grid -->
                     <div class="schools-gallery-grid">
-                        <!-- SMK Card -->
                         <div class="school-gallery-card" onclick="openPopup('smkPopup')">
                             <img src="education/smkbuilding.png" alt="SMK Bukit Garam" class="school-bg-image">
                             <div class="school-overlay"></div>
@@ -468,8 +366,6 @@
                                 <h3 class="school-name">SMK Bukit Garam, Sabah</h3>
                             </div>
                         </div>
-                        
-                        <!-- UTeM Card -->
                         <div class="school-gallery-card" onclick="openPopup('utemPopup')">
                             <img src="education/ubuilding.png" alt="UTeM" class="school-bg-image">
                             <div class="school-overlay"></div>
@@ -484,15 +380,13 @@
                 <!-- ===== CONTACT TAB ===== -->
                 <div class="tab-content" id="contact">
                     <h2 class="section-title">Contact</h2>
-                    
                     <div class="contact-container">
                         <form class="contact-form" action="https://formsubmit.co/selviansamsul@gmail.com" method="POST">
-                            <!-- FormSubmit Configuration -->
                             <input type="hidden" name="_subject" value="New Portfolio Contact Message!">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
                             <input type="text" name="_honey" style="display:none">
-                            
+
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="name">Full Name</label>
@@ -516,62 +410,41 @@
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </form>
-                        
+
                         <div class="contact-info-box">
                             <h3>Get In Touch</h3>
                             <p>Feel free to reach out for collaborations, projects, or just to say hi!</p>
                             <div class="contact-methods">
                                 <div class="method-item">
                                     <i class="fas fa-envelope"></i>
-                                    <div>
-                                        <h4>Email</h4>
-                                        <p>selviansamsul@gmail.com</p>
-                                    </div>
+                                    <div><h4>Email</h4><p>selviansamsul@gmail.com</p></div>
                                 </div>
                                 <div class="method-item">
                                     <i class="fas fa-location-dot"></i>
-                                    <div>
-                                        <h4>Location</h4>
-                                        <p>Melaka, Malaysia</p>
-                                    </div>
+                                    <div><h4>Location</h4><p>Melaka, Malaysia</p></div>
                                 </div>
                                 <div class="method-item">
                                     <i class="fab fa-instagram"></i>
-                                    <div>
-                                        <h4>Instagram</h4>
-                                        <p>@senseinsem</p>
-                                    </div>
+                                    <div><h4>Instagram</h4><p>@senseinsem</p></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Google Maps Section -->
                     <div class="map-section">
-                        <h3 class="map-title">
-                            <i class="fas fa-map-marker-alt"></i>
-                            My Location
-                        </h3>
+                        <h3 class="map-title"><i class="fas fa-map-marker-alt"></i> My Location</h3>
                         <div class="map-container">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.7738837843967!2d102.31850731475395!3d2.310990798408954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1e9acc8d2c0af%3A0x5dc09def5b2c968c!2sUniversiti%20Teknikal%20Malaysia%20Melaka!5e0!3m2!1sen!2smy!4v1642000000000!5m2!1sen!2smy" 
-                                width="100%" 
-                                height="450" 
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.7738837843967!2d102.31850731475395!3d2.310990798408954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1e9acc8d2c0af%3A0x5dc09def5b2c968c!2sUniversiti%20Teknikal%20Malaysia%20Melaka!5e0!3m2!1sen!2smy!4v1642000000000!5m2!1sen!2smy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
 
-            </div>
+            </div><!-- end content-area -->
         </main>
     </div>
 
     <!-- ===== POPUPS & MODALS ===== -->
-    
+
     <!-- Skills Popups -->
     <div id="htmlPopup" class="popup">
         <div class="popup-content">
@@ -630,8 +503,7 @@
             <div class="popup-grid">
                 <div class="popup-card"><img src="animation/hp.png" alt="Blender"><p>Blender</p></div>
                 <a href="https://youtu.be/5El2oPyLueI?si=GJ-XKhFjiFMWvHN2" target="_blank" class="popup-card">
-                    <img src="animation/aif.png" alt="iBisPaint">
-                    <p>iBisPaint</p>
+                    <img src="animation/aif.png" alt="iBisPaint"><p>iBisPaint</p>
                 </a>
             </div>
         </div>
@@ -657,7 +529,7 @@
             <div class="project-details">
                 <p><strong>Course:</strong> Web Programming</p>
                 <p><strong>Year:</strong> 2024</p>
-                <p><strong>Description:</strong> Built a fully responsive portfolio website featuring modern UI/UX design, interactive elements, and smooth animations. The project demonstrates proficiency in front-end web development.</p>
+                <p><strong>Description:</strong> Built a fully responsive portfolio website featuring modern UI/UX design, interactive elements, and smooth animations.</p>
                 <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript, Responsive Design</p>
             </div>
             <div class="popup-grid">
@@ -676,8 +548,7 @@
                 <p><strong>Description:</strong> Developed a comprehensive inventory management system with user authentication, data relationships, and query optimization.</p>
                 <p><strong>Technologies:</strong> MySQL, SQL, Database Design, ERD</p>
             </div>
-            <div class="popup-grid">
-            </div>
+            <div class="popup-grid"></div>
         </div>
     </div>
 
@@ -695,7 +566,7 @@
                 <div class="popup-card"><img src="projects/Blender/1.png" alt="Animation 1"><p>ReLive</p></div>
                 <div class="popup-card"><img src="projects/Blender/2.png" alt="Animation 2"><p>Character ReLive</p></div>
                 <div class="popup-card"><img src="projects/Blender/3.png" alt="Animation 3"><p>Animated for Video TikTok</p></div>
-                <div class="popup-card"><img src="projects/Blender/5.png" alt="Animation 3"><p>Poster Re-Live</p></div>
+                <div class="popup-card"><img src="projects/Blender/5.png" alt="Animation 4"><p>Poster Re-Live</p></div>
             </div>
         </div>
     </div>
@@ -737,7 +608,7 @@
         </div>
     </div>
 
-    <!-- Big Image Popup for clicking images -->
+    <!-- Big Image Popup -->
     <div id="bigImagePopup" class="popup" style="display: none;">
         <span class="close" onclick="closePopup('bigImagePopup')">&times;</span>
         <img id="bigImage" src="" alt="Big Image" style="max-width:90%; max-height:90%; border-radius:10px; display:block; margin:auto;">
@@ -747,224 +618,207 @@
     <div id="workshopModal" class="workshop-modal">
         <div class="workshop-modal-overlay" onclick="closeWorkshopModal()"></div>
         <div class="workshop-modal-content">
-            <button class="workshop-modal-close" onclick="closeWorkshopModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            
+            <button class="workshop-modal-close" onclick="closeWorkshopModal()"><i class="fas fa-times"></i></button>
             <div class="workshop-modal-header">
                 <div class="workshop-date-badge">2024/2025</div>
                 <h2 class="workshop-modal-title">Workshop II | BITU 3923 SEM 1 2025/2026</h2>
-                <p class="workshop-modal-description">
-                    Produce, create, edit and use multimedia elements that are compatible with developed projects. Integrates all the multimedia elements used in generating a single standalone end product. Use and operate multimedia tools and software well. Presenting creative work through exhibitions. Develop a product that has commercial features.
-                </p>
+                <p class="workshop-modal-description">Produce, create, edit and use multimedia elements that are compatible with developed projects. Integrates all the multimedia elements used in generating a single standalone end product. Use and operate multimedia tools and software well. Presenting creative work through exhibitions. Develop a product that has commercial features.</p>
                 <div class="workshop-modal-info">
                     <span><i class="fas fa-clock"></i> Full Semester</span>
                     <span><i class="fas fa-users"></i> UTeM Students</span>
                 </div>
             </div>
-            
             <div class="workshop-modal-body">
                 <h3 class="workshop-gallery-title">WORKSHOP GALLERY</h3>
                 <div class="workshop-gallery-grid">
                     <div class="workshop-gallery-item" onclick="openWorkshopImage('projects/Blender/1.png')">
                         <img src="projects/Blender/1.png" alt="ReLive">
-                        <div class="workshop-gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
+                        <div class="workshop-gallery-overlay"><i class="fas fa-search-plus"></i></div>
                     </div>
                     <div class="workshop-gallery-item" onclick="openWorkshopImage('projects/Blender/2.png')">
                         <img src="projects/Blender/2.png" alt="Character ReLive">
-                        <div class="workshop-gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
+                        <div class="workshop-gallery-overlay"><i class="fas fa-search-plus"></i></div>
                     </div>
                     <div class="workshop-gallery-item" onclick="openWorkshopImage('projects/Blender/3.png')">
                         <img src="projects/Blender/3.png" alt="Animated for TikTok">
-                        <div class="workshop-gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
+                        <div class="workshop-gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FYP Journey Modal -->
+    <div id="fypJourneyModal" class="fyp-modal">
+        <div class="fyp-modal-overlay" onclick="closeFYPJourney()"></div>
+        <div class="fyp-modal-content">
+            <button class="fyp-modal-close" onclick="closeFYPJourney()"><i class="fas fa-times"></i></button>
+            <div class="fyp-journey-header">
+                <div class="fyp-journey-badge">Journey Timeline</div>
+                <h2 class="fyp-journey-title" id="fypJourneyTitle">My FYP Journey</h2>
+                <p class="fyp-journey-subtitle" id="fypJourneySubtitle">Progress updates and milestones</p>
+            </div>
+            <div class="fyp-timeline-wrapper">
+                <div class="fyp-timeline-track" id="fypTimelineTrack"></div>
+            </div>
+            <div class="fyp-timeline-hint">
+                <i class="fas fa-hand-pointer"></i> Klik entry untuk lihat detail &nbsp;|&nbsp;
+                <i class="fas fa-arrows-left-right"></i> Scroll kiri/kanan
+            </div>
+        </div>
+    </div>
+
+    <!-- FYP Entry Detail Modal -->
+    <div id="fypDetailModal" class="fyp-modal fyp-detail-modal">
+        <div class="fyp-modal-overlay" onclick="closeFYPDetail()"></div>
+        <div class="fyp-modal-content fyp-detail-content">
+            <button class="fyp-modal-close" onclick="closeFYPDetail()"><i class="fas fa-times"></i></button>
+            <div class="fyp-detail-header">
+                <div class="fyp-detail-date-badge" id="fypDetailDateBadge">8 Mac 2026</div>
+                <h2 class="fyp-detail-title" id="fypDetailTitle">Entry Title</h2>
+                <p class="fyp-detail-desc" id="fypDetailDesc">Description here</p>
+            </div>
+            <div class="fyp-detail-images" id="fypDetailImages"></div>
+        </div>
+    </div>
+
+    <!-- FYP Admin Panel Modal -->
+    <div id="fypAdminModal" class="fyp-modal fyp-admin-modal">
+        <div class="fyp-modal-overlay" onclick="closeFYPAdmin()"></div>
+        <div class="fyp-modal-content fyp-admin-content">
+            <button class="fyp-modal-close" onclick="closeFYPAdmin()"><i class="fas fa-times"></i></button>
+
+            <!-- Login Screen -->
+            <div id="fypAdminLogin" class="fyp-admin-section">
+                <div class="fyp-admin-lock-icon"><i class="fas fa-lock"></i></div>
+                <h2 class="fyp-admin-title">Admin Panel</h2>
+                <p class="fyp-admin-subtitle">Enter password to manage FYP content</p>
+                <div class="fyp-admin-login-form">
+                    <input type="password" id="fypAdminPassword" placeholder="Enter admin password" class="fyp-admin-input" onkeydown="if(event.key==='Enter') verifyAdminPassword()">
+                    <button class="fyp-admin-submit-btn" onclick="verifyAdminPassword()"><i class="fas fa-unlock"></i> Login</button>
+                </div>
+                <p class="fyp-admin-hint">Default password: <strong>fyp2026</strong></p>
+            </div>
+
+            <!-- Admin Dashboard -->
+            <div id="fypAdminDashboard" class="fyp-admin-section" style="display:none;">
+                <div class="fyp-admin-dash-header">
+                    <h2 class="fyp-admin-title">FYP Admin Panel</h2>
+                    <button class="fyp-admin-logout-btn" onclick="logoutAdmin()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+
+                <!-- Project Settings -->
+                <div class="fyp-admin-block">
+                    <h3 class="fyp-admin-block-title"><i class="fas fa-cog"></i> Project Settings</h3>
+                    <div class="fyp-admin-form-grid">
+                        <div class="fyp-admin-form-group">
+                            <label>Project Title</label>
+                            <input type="text" id="adminProjectTitle" placeholder="e.g. Smart Campus System" class="fyp-admin-input">
+                        </div>
+                        <div class="fyp-admin-form-group">
+                            <label>Year Range</label>
+                            <input type="text" id="adminProjectYear" placeholder="e.g. 2025 - 2026" class="fyp-admin-input">
+                        </div>
+                        <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                            <label>Project Description</label>
+                            <textarea id="adminProjectDesc" placeholder="Brief description of your FYP project..." class="fyp-admin-textarea" rows="3"></textarea>
+                        </div>
+                        <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                            <label>Thumbnail URL — Gunakan URL dari GitHub repo anda (contoh: <code>https://raw.githubusercontent.com/username/repo/main/fyp/image.jpg</code>)</label>
+                            <input type="text" id="adminProjectThumb" placeholder="https://raw.githubusercontent.com/..." class="fyp-admin-input">
+                        </div>
+                        <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                            <label>Project Progress: <span id="progressValueDisplay">0%</span></label>
+                            <input type="range" id="adminProjectProgress" min="0" max="100" value="0" class="fyp-progress-slider"
+                                oninput="document.getElementById('progressValueDisplay').textContent = this.value + '%'">
                         </div>
                     </div>
+                    <button class="fyp-admin-save-btn" onclick="saveProjectSettings()"><i class="fas fa-save"></i> Save Settings</button>
+                </div>
+
+                <!-- Add New Journey Entry -->
+                <div class="fyp-admin-block">
+                    <h3 class="fyp-admin-block-title"><i class="fas fa-plus-circle"></i> Add New Journey Entry</h3>
+                    <div class="fyp-admin-form-grid">
+                        <div class="fyp-admin-form-group">
+                            <label>Date</label>
+                            <input type="date" id="adminEntryDate" class="fyp-admin-input">
+                        </div>
+                        <div class="fyp-admin-form-group">
+                            <label>Entry Title</label>
+                            <input type="text" id="adminEntryTitle" placeholder="e.g. Literature Review" class="fyp-admin-input">
+                        </div>
+                        <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                            <label>Description</label>
+                            <textarea id="adminEntryDesc" placeholder="What did you do on this date?" class="fyp-admin-textarea" rows="3"></textarea>
+                        </div>
+
+                        <!-- Thumbnail URL for entry -->
+                        <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                            <label>Thumbnail URL (untuk timeline) — Upload gambar ke folder <code>fyp/</code> dalam GitHub repo anda, kemudian copy URL raw</label>
+                            <input type="text" id="adminEntryThumb" placeholder="https://raw.githubusercontent.com/username/repo/main/fyp/image.jpg" class="fyp-admin-input">
+                            <small class="fyp-url-hint">💡 Cara dapat URL: GitHub repo → folder fyp → klik gambar → klik "Raw" → copy URL</small>
+                        </div>
+
+                        <!-- OR use drag & drop as backup -->
+                        <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                            <label>ATAU Upload terus (Backup — compress & simpan dalam browser)</label>
+                            <div class="fyp-drop-zone" id="thumbDropZone" onclick="document.getElementById('thumbFileInput').click()">
+                                <input type="file" id="thumbFileInput" accept="image/*" style="display:none" onchange="handleThumbFile(this)">
+                                <div class="fyp-drop-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <p class="fyp-drop-text">Drag & drop atau <span>klik untuk pilih</span></p>
+                                <p class="fyp-drop-hint">Gambar akan di-compress secara automatik</p>
+                                <img id="thumbPreview" class="fyp-drop-preview" style="display:none">
+                                <button type="button" class="fyp-drop-clear" id="thumbClearBtn" style="display:none" onclick="clearThumb(event)">
+                                    <i class="fas fa-times"></i> Buang
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Detail Images URL (Primary - recommended) -->
+                        <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                            <label>Detail Images — URL (Disyorkan! Satu URL setiap baris)</label>
+                            <textarea id="adminEntryImagesUrl" placeholder="https://raw.githubusercontent.com/username/repo/main/fyp/img1.jpg&#10;https://raw.githubusercontent.com/username/repo/main/fyp/img2.jpg" class="fyp-admin-textarea" rows="4"></textarea>
+                            <small class="fyp-url-hint">💡 Upload semua gambar ke folder <code>fyp/</code> dalam GitHub repo dulu, kemudian paste URL raw di sini</small>
+                        </div>
+
+                        <!-- Detail Images Upload (Backup) -->
+                        <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                            <label>ATAU Upload Gambar Detail (Backup)</label>
+                            <div class="fyp-drop-zone fyp-drop-multi" id="detailDropZone" onclick="document.getElementById('detailFileInput').click()">
+                                <input type="file" id="detailFileInput" accept="image/*" multiple style="display:none" onchange="handleDetailFiles(this)">
+                                <div class="fyp-drop-icon"><i class="fas fa-images"></i></div>
+                                <p class="fyp-drop-text">Drag & drop atau <span>klik untuk pilih</span></p>
+                                <p class="fyp-drop-hint">Boleh pilih banyak gambar — akan di-compress automatik</p>
+                            </div>
+                            <div id="detailPreviewGrid" class="fyp-detail-preview-grid"></div>
+                        </div>
+
+                        <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
+                            <label>Image Captions (satu per baris, ikut urutan gambar)</label>
+                            <textarea id="adminEntryCaptions" placeholder="Screenshot of diagram&#10;Meeting notes&#10;Code review" class="fyp-admin-textarea" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <button class="fyp-admin-save-btn" onclick="addJourneyEntry()"><i class="fas fa-plus"></i> Add Entry</button>
+                </div>
+
+                <!-- Existing Entries -->
+                <div class="fyp-admin-block">
+                    <h3 class="fyp-admin-block-title"><i class="fas fa-list"></i> Manage Entries</h3>
+                    <div id="adminEntriesList" class="fyp-admin-entries-list"></div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    
-<!-- FYP Journey Modal (Timeline View) -->
-<div id="fypJourneyModal" class="fyp-modal">
-    <div class="fyp-modal-overlay" onclick="closeFYPJourney()"></div>
-    <div class="fyp-modal-content">
-        <button class="fyp-modal-close" onclick="closeFYPJourney()">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="fyp-journey-header">
-            <div class="fyp-journey-badge">Journey Timeline</div>
-            <h2 class="fyp-journey-title" id="fypJourneyTitle">My FYP Journey</h2>
-            <p class="fyp-journey-subtitle" id="fypJourneySubtitle">Progress updates and milestones</p>
-        </div>
-        <div class="fyp-timeline-wrapper">
-            <div class="fyp-timeline-track" id="fypTimelineTrack">
-                <!-- Timeline entries injected by JS -->
-            </div>
-        </div>
-        <div class="fyp-timeline-hint">
-            <i class="fas fa-hand-pointer"></i> Klik entry untuk lihat detail &nbsp;|&nbsp;
-            <i class="fas fa-arrows-left-right"></i> Scroll kiri/kanan
-        </div>
+    <!-- FYP Image Lightbox -->
+    <div id="fypLightbox" class="fyp-lightbox">
+        <div class="fyp-lightbox-overlay" onclick="closeFYPLightbox()"></div>
+        <button class="fyp-lightbox-close" onclick="closeFYPLightbox()"><i class="fas fa-times"></i></button>
+        <img id="fypLightboxImg" src="" alt="" class="fyp-lightbox-img">
+        <p id="fypLightboxCaption" class="fyp-lightbox-caption"></p>
     </div>
-</div>
-
-<!-- FYP Entry Detail Modal -->
-<div id="fypDetailModal" class="fyp-modal fyp-detail-modal">
-    <div class="fyp-modal-overlay" onclick="closeFYPDetail()"></div>
-    <div class="fyp-modal-content fyp-detail-content">
-        <button class="fyp-modal-close" onclick="closeFYPDetail()">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="fyp-detail-header">
-            <div class="fyp-detail-date-badge" id="fypDetailDateBadge">8 Mac 2026</div>
-            <h2 class="fyp-detail-title" id="fypDetailTitle">Entry Title</h2>
-            <p class="fyp-detail-desc" id="fypDetailDesc">Description here</p>
-        </div>
-        <div class="fyp-detail-images" id="fypDetailImages">
-            <!-- Images injected by JS -->
-        </div>
-    </div>
-</div>
-
-<!-- FYP Admin Panel Modal -->
-<div id="fypAdminModal" class="fyp-modal fyp-admin-modal">
-    <div class="fyp-modal-overlay" onclick="closeFYPAdmin()"></div>
-    <div class="fyp-modal-content fyp-admin-content">
-        <button class="fyp-modal-close" onclick="closeFYPAdmin()">
-            <i class="fas fa-times"></i>
-        </button>
-
-        <!-- Login Screen -->
-        <div id="fypAdminLogin" class="fyp-admin-section">
-            <div class="fyp-admin-lock-icon"><i class="fas fa-lock"></i></div>
-            <h2 class="fyp-admin-title">Admin Panel</h2>
-            <p class="fyp-admin-subtitle">Enter password to manage FYP content</p>
-            <div class="fyp-admin-login-form">
-                <input type="password" id="fypAdminPassword" placeholder="Enter admin password" class="fyp-admin-input" onkeydown="if(event.key==='Enter') verifyAdminPassword()">
-                <button class="fyp-admin-submit-btn" onclick="verifyAdminPassword()">
-                    <i class="fas fa-unlock"></i> Login
-                </button>
-            </div>
-            <p class="fyp-admin-hint">Default password: <strong>fyp2026</strong></p>
-        </div>
-
-        <!-- Admin Dashboard -->
-        <div id="fypAdminDashboard" class="fyp-admin-section" style="display:none;">
-            <div class="fyp-admin-dash-header">
-                <h2 class="fyp-admin-title">FYP Admin Panel</h2>
-                <button class="fyp-admin-logout-btn" onclick="logoutAdmin()">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </button>
-            </div>
-
-            <!-- Project Settings -->
-            <div class="fyp-admin-block">
-                <h3 class="fyp-admin-block-title"><i class="fas fa-cog"></i> Project Settings</h3>
-                <div class="fyp-admin-form-grid">
-                    <div class="fyp-admin-form-group">
-                        <label>Project Title</label>
-                        <input type="text" id="adminProjectTitle" placeholder="e.g. Smart Campus System" class="fyp-admin-input">
-                    </div>
-                    <div class="fyp-admin-form-group">
-                        <label>Year Range</label>
-                        <input type="text" id="adminProjectYear" placeholder="e.g. 2025 - 2026" class="fyp-admin-input">
-                    </div>
-                    <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
-                        <label>Project Description</label>
-                        <textarea id="adminProjectDesc" placeholder="Brief description of your FYP project..." class="fyp-admin-textarea" rows="3"></textarea>
-                    </div>
-                    <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
-                        <label>Thumbnail URL (optional)</label>
-                        <input type="text" id="adminProjectThumb" placeholder="https://... or leave empty" class="fyp-admin-input">
-                    </div>
-                </div>
-                <button class="fyp-admin-save-btn" onclick="saveProjectSettings()">
-                    <i class="fas fa-save"></i> Save Settings
-                </button>
-            </div>
-
-            <!-- Add New Journey Entry -->
-            <div class="fyp-admin-block">
-                <h3 class="fyp-admin-block-title"><i class="fas fa-plus-circle"></i> Add New Journey Entry</h3>
-                <div class="fyp-admin-form-grid">
-                    <div class="fyp-admin-form-group">
-                        <label>Date</label>
-                        <input type="date" id="adminEntryDate" class="fyp-admin-input">
-                    </div>
-                    <div class="fyp-admin-form-group">
-                        <label>Entry Title</label>
-                        <input type="text" id="adminEntryTitle" placeholder="e.g. Literature Review" class="fyp-admin-input">
-                    </div>
-                    <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
-                        <label>Description</label>
-                        <textarea id="adminEntryDesc" placeholder="What did you do on this date?" class="fyp-admin-textarea" rows="3"></textarea>
-                    </div>
-                    <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
-    <label>Thumbnail Image (for timeline)</label>
-    <div class="fyp-drop-zone" id="thumbDropZone" onclick="document.getElementById('thumbFileInput').click()">
-        <input type="file" id="thumbFileInput" accept="image/*" style="display:none" onchange="handleThumbFile(this)">
-        <div class="fyp-drop-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-        <p class="fyp-drop-text">Drag & drop gambar atau <span>klik untuk pilih</span></p>
-        <p class="fyp-drop-hint">PNG, JPG, WEBP</p>
-        <img id="thumbPreview" class="fyp-drop-preview" style="display:none">
-        <button type="button" class="fyp-drop-clear" id="thumbClearBtn" style="display:none" onclick="clearThumb(event)">
-            <i class="fas fa-times"></i> Buang
-        </button>
-    </div>
-    <input type="hidden" id="adminEntryThumb">
-</div>
-
-<div class="fyp-admin-form-group" style="grid-column: 1/-1;">
-    <label>Detail Images</label>
-    <div class="fyp-drop-zone fyp-drop-multi" id="detailDropZone" onclick="document.getElementById('detailFileInput').click()">
-        <input type="file" id="detailFileInput" accept="image/*" multiple style="display:none" onchange="handleDetailFiles(this)">
-        <div class="fyp-drop-icon"><i class="fas fa-images"></i></div>
-        <p class="fyp-drop-text">Drag & drop gambar atau <span>klik untuk pilih</span></p>
-        <p class="fyp-drop-hint">Boleh pilih banyak gambar sekaligus</p>
-    </div>
-    <div id="detailPreviewGrid" class="fyp-detail-preview-grid"></div>
-    <input type="hidden" id="adminEntryImages">
-</div>
-
-                    <div class="fyp-admin-form-group" style="grid-column: 1/-1;">
-                        <label>Image Captions (one per line, same order as images)</label>
-                        <textarea id="adminEntryCaptions" placeholder="Screenshot of diagram&#10;Meeting notes&#10;Code review" class="fyp-admin-textarea" rows="4"></textarea>
-                    </div>
-                </div>
-                <button class="fyp-admin-save-btn" onclick="addJourneyEntry()">
-                    <i class="fas fa-plus"></i> Add Entry
-                </button>
-            </div>
-
-            <!-- Existing Entries -->
-            <div class="fyp-admin-block">
-                <h3 class="fyp-admin-block-title"><i class="fas fa-list"></i> Manage Entries</h3>
-                <div id="adminEntriesList" class="fyp-admin-entries-list">
-                    <!-- Entries listed here by JS -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- FYP Image Lightbox -->
-<div id="fypLightbox" class="fyp-lightbox">
-    <div class="fyp-lightbox-overlay" onclick="closeFYPLightbox()"></div>
-    <button class="fyp-lightbox-close" onclick="closeFYPLightbox()"><i class="fas fa-times"></i></button>
-    <img id="fypLightboxImg" src="" alt="" class="fyp-lightbox-img">
-    <p id="fypLightboxCaption" class="fyp-lightbox-caption"></p>
-</div>
-
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
