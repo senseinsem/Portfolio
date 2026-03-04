@@ -3779,6 +3779,500 @@ body.light-mode .fyp-detail-preview-item { border: 2px solid var(--light-border)
     white-space: nowrap;
 }
 
+/* ================================================================
+   PASTE INI KE BAHAGIAN PALING BAWAH style.css ANDA
+   New features: Loading Screen, Back to Top, Portfolio Filter,
+   Contact Success, FYP Progress Bar, Page Transitions, URL hints
+   ================================================================ */
+
+/* ===== LOADING SCREEN ===== */
+.loading-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+body.dark-mode .loading-screen {
+    background: var(--dark-primary);
+}
+
+body.light-mode .loading-screen {
+    background: var(--light-primary);
+}
+
+.loading-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loading-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.loading-logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    animation: logoPulse 1.5s ease-in-out infinite;
+}
+
+body.dark-mode .loading-logo { color: var(--accent-dark); }
+body.light-mode .loading-logo { color: var(--accent-light); }
+
+@keyframes logoPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.95); }
+}
+
+.loading-bar-wrap {
+    width: 220px;
+    height: 4px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+body.dark-mode .loading-bar-wrap { background: rgba(74, 158, 255, 0.15); }
+body.light-mode .loading-bar-wrap { background: rgba(59, 130, 246, 0.12); }
+
+.loading-bar {
+    height: 100%;
+    border-radius: 10px;
+    animation: loadingProgress 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+body.dark-mode .loading-bar { background: var(--accent-dark); }
+body.light-mode .loading-bar { background: var(--accent-light); }
+
+@keyframes loadingProgress {
+    0% { width: 0%; }
+    30% { width: 40%; }
+    70% { width: 75%; }
+    100% { width: 100%; }
+}
+
+.loading-text {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeInOut 1.5s ease-in-out infinite;
+}
+
+body.dark-mode .loading-text { color: var(--dark-text-gray); }
+body.light-mode .loading-text { color: var(--light-text-gray); }
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+/* ===== BACK TO TOP BUTTON ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+body.dark-mode .back-to-top {
+    background: var(--accent-dark);
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(74, 158, 255, 0.4);
+}
+
+body.light-mode .back-to-top {
+    background: var(--accent-light);
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) !important;
+}
+
+body.dark-mode .back-to-top:hover {
+    box-shadow: 0 15px 40px rgba(74, 158, 255, 0.5);
+}
+
+body.light-mode .back-to-top:hover {
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.45);
+}
+
+/* ===== SMOOTH PAGE TRANSITIONS ===== */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: tabFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab-content.fade-out {
+    animation: tabFadeOut 0.2s ease forwards;
+}
+
+@keyframes tabFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tabFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* ===== PORTFOLIO FILTER BUTTONS ===== */
+.portfolio-filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border-radius: 25px;
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+body.dark-mode .filter-btn {
+    background: rgba(74, 158, 255, 0.08);
+    border: 1px solid var(--dark-border);
+    color: var(--dark-text-gray);
+}
+
+body.light-mode .filter-btn {
+    background: rgba(59, 130, 246, 0.06);
+    border: 1px solid var(--light-border);
+    color: var(--light-text-gray);
+}
+
+body.dark-mode .filter-btn.active,
+body.dark-mode .filter-btn:hover {
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74, 158, 255, 0.3);
+}
+
+body.light-mode .filter-btn.active,
+body.light-mode .filter-btn:hover {
+    background: var(--accent-light);
+    border-color: var(--accent-light);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
+}
+
+@keyframes filterIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== CONTACT SUCCESS NOTIFICATION ===== */
+.contact-success-notif {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 28px;
+    border-radius: 20px;
+    z-index: 99999;
+    min-width: 380px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.dark-mode .contact-success-notif {
+    background: linear-gradient(135deg, #1a2332, #1c2f1c);
+    border: 1px solid #22c55e;
+}
+
+body.light-mode .contact-success-notif {
+    background: #ffffff;
+    border: 1px solid #22c55e;
+}
+
+.contact-success-notif.show {
+    bottom: 35px;
+}
+
+.contact-success-icon {
+    font-size: 32px;
+    color: #22c55e;
+    flex-shrink: 0;
+}
+
+.contact-success-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.contact-success-text strong {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+body.dark-mode .contact-success-text strong { color: var(--dark-text); }
+body.light-mode .contact-success-text strong { color: var(--light-text); }
+
+.contact-success-text span {
+    font-size: 13px;
+}
+
+body.dark-mode .contact-success-text span { color: var(--dark-text-gray); }
+body.light-mode .contact-success-text span { color: var(--light-text-gray); }
+
+.contact-success-notif button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+body.dark-mode .contact-success-notif button { color: var(--dark-text-gray); }
+body.light-mode .contact-success-notif button { color: var(--light-text-gray); }
+
+.contact-success-notif button:hover { transform: scale(1.2); }
+
+/* ===== SUBMIT BUTTON STATES ===== */
+.submit-btn.btn-sending {
+    background: #f59e0b !important;
+}
+
+.submit-btn.btn-success {
+    background: #22c55e !important;
+}
+
+/* ===== FYP PROGRESS BAR (on card) ===== */
+.fyp-progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 6px 0;
+}
+
+.fyp-progress-track {
+    flex: 1;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+body.dark-mode .fyp-progress-track {
+    background: rgba(74, 158, 255, 0.12);
+}
+
+body.light-mode .fyp-progress-track {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.fyp-progress-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .fyp-progress-fill {
+    background: linear-gradient(90deg, #3d85d9, var(--accent-dark));
+    box-shadow: 0 0 8px rgba(74, 158, 255, 0.5);
+}
+
+body.light-mode .fyp-progress-fill {
+    background: linear-gradient(90deg, #2563EB, var(--accent-light));
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+}
+
+.fyp-progress-label {
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+body.dark-mode .fyp-progress-label { color: var(--accent-dark); }
+body.light-mode .fyp-progress-label { color: var(--accent-light); }
+
+/* ===== FYP PROGRESS SLIDER (admin) ===== */
+.fyp-progress-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: 6px;
+}
+
+body.dark-mode .fyp-progress-slider {
+    background: rgba(74, 158, 255, 0.2);
+    accent-color: var(--accent-dark);
+}
+
+body.light-mode .fyp-progress-slider {
+    background: rgba(59, 130, 246, 0.15);
+    accent-color: var(--accent-light);
+}
+
+/* ===== URL HINT TEXT ===== */
+.fyp-url-hint {
+    font-size: 12px;
+    margin-top: 6px;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 8px;
+    line-height: 1.6;
+}
+
+body.dark-mode .fyp-url-hint {
+    color: var(--dark-text-gray);
+    background: rgba(74, 158, 255, 0.06);
+}
+
+body.light-mode .fyp-url-hint {
+    color: var(--light-text-gray);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.fyp-url-hint code {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+body.dark-mode .fyp-url-hint code {
+    background: rgba(74, 158, 255, 0.15);
+    color: var(--accent-dark);
+}
+
+body.light-mode .fyp-url-hint code {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-light);
+}
+
+/* Admin label code tags */
+.fyp-admin-form-group label code {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: 700;
+}
+
+body.dark-mode .fyp-admin-form-group label code {
+    background: rgba(74, 158, 255, 0.15);
+    color: var(--accent-dark);
+}
+
+body.light-mode .fyp-admin-form-group label code {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-light);
+}
+
+/* ===== RESPONSIVE ADDITIONS ===== */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        font-size: 16px;
+    }
+
+    .contact-success-notif {
+        min-width: unset;
+        width: calc(100% - 40px);
+        left: 20px;
+        transform: none;
+    }
+
+    .contact-success-notif.show {
+        bottom: 20px;
+    }
+
+    .portfolio-filters {
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 11px;
+    }
+
+    .fyp-progress-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .fyp-progress-track {
+        width: 100%;
+    }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .fyp-project-card {
