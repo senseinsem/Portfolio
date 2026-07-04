@@ -406,15 +406,23 @@ function setupHorizontalScroll(container) {
 const FYP_STORAGE_KEY = 'fypData';
 const FYP_ADMIN_PASSWORD = 'fyp2026';
 
+// Data FYP sekarang datang dari fyp-data.js (FYP_DEFAULT_DATA) supaya SEMUA
+// pelawat website (browser/email/device lain) nampak data yang sama.
+// localStorage cuma dipakai sebagai "draf tempatan" untuk anda preview
+// sebelum di-export dan di-publish ke fyp-data.js.
 function getFYPData() {
-    try {
-        const raw = localStorage.getItem(FYP_STORAGE_KEY);
-        return raw ? JSON.parse(raw) : {
+    const fallback = (typeof FYP_DEFAULT_DATA !== 'undefined')
+        ? JSON.parse(JSON.stringify(FYP_DEFAULT_DATA))
+        : {
             project: { title: 'My Final Year Project', description: 'Click to view my FYP journey and progress updates.', year: '2025 - 2026', thumbnail: '', progress: 0 },
             entries: []
         };
+
+    try {
+        const raw = localStorage.getItem(FYP_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : fallback;
     } catch (e) {
-        return { project: { title: 'My Final Year Project', description: '', year: '2025 - 2026', thumbnail: '', progress: 0 }, entries: [] };
+        return fallback;
     }
 }
 
@@ -432,6 +440,29 @@ function saveFYPData(data) {
     } catch (e) {
         showAdminToast('❌ Gagal save! localStorage penuh. Gunakan URL gambar sahaja.', true);
         return false;
+    }
+}
+
+// ===== EXPORT DATA (untuk publish ke fyp-data.js supaya semua orang nampak) =====
+function exportFYPData() {
+    const data = getFYPData();
+    const json = JSON.stringify(data, null, 4);
+
+    const showFallbackPrompt = () => {
+        window.prompt(
+            'Tak boleh auto-copy. Sila copy JSON di bawah (Ctrl+A, Ctrl+C), lepas tu paste gantikan isi FYP_DEFAULT_DATA dalam fyp-data.js:',
+            json
+        );
+    };
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(json).then(() => {
+            showAdminToast('✅ Data disalin! Paste dalam fyp-data.js & upload/commit ke GitHub.');
+        }).catch(() => {
+            showFallbackPrompt();
+        });
+    } else {
+        showFallbackPrompt();
     }
 }
 
