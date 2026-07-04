@@ -707,6 +707,24 @@
                     <button class="fyp-admin-logout-btn" onclick="logoutAdmin()"><i class="fas fa-sign-out-alt"></i> Logout</button>
                 </div>
 
+                <!-- Publish Data Block: supaya semua orang (browser/email lain) nampak -->
+                <div class="fyp-admin-block">
+                    <h3 class="fyp-admin-block-title"><i class="fas fa-cloud-upload-alt"></i> Publish Supaya Semua Orang Nampak</h3>
+                    <p class="fyp-admin-hint" style="text-align:left; margin-bottom:14px;">
+                        Website ni <strong>static</strong> (tiada database), jadi apa-apa yang anda save di sini cuma
+                        tersimpan dalam browser anda sendiri. Untuk orang lain (email/browser/device lain) boleh
+                        nampak update FYP anda, ikut langkah ni:
+                    </p>
+                    <ol style="margin: 0 0 16px 20px; font-size: 14px; line-height: 1.9;">
+                        <li>Lengkapkan dulu Project Settings & Journey Entries di bawah, macam biasa.</li>
+                        <li>Klik butang <strong>"Export Data (Copy JSON)"</strong> — JSON akan disalin (copy) automatik.</li>
+                        <li>Buka fail <code>fyp-data.js</code> dalam GitHub repo anda.</li>
+                        <li>Replace isi dalam <code>FYP_DEFAULT_DATA = { ... }</code> dengan JSON yang baru di-copy.</li>
+                        <li>Commit & push. Lepas GitHub Pages update (± 1 minit), semua orang akan nampak — dari email/browser/device mana pun.</li>
+                    </ol>
+                    <button class="fyp-admin-save-btn" onclick="exportFYPData()"><i class="fas fa-copy"></i> Export Data (Copy JSON)</button>
+                </div>
+
                 <!-- Project Settings -->
                 <div class="fyp-admin-block">
                     <h3 class="fyp-admin-block-title"><i class="fas fa-cog"></i> Project Settings</h3>
@@ -819,7 +837,7 @@
         <p id="fypLightboxCaption" class="fyp-lightbox-caption"></p>
     </div>
 
+    <script src="fyp-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-
